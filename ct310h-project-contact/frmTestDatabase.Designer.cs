@@ -1,6 +1,6 @@
 ﻿namespace ct310h_project_contact
 {
-    partial class Form1
+    partial class frmTestDatabase
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            btnTest = new Button();
+            SuspendLayout();
+            // 
+            // btnTest
+            // 
+            btnTest.Location = new Point(331, 192);
+            btnTest.Name = "btnTest";
+            btnTest.Size = new Size(136, 23);
+            btnTest.TabIndex = 0;
+            btnTest.Text = "Test connection";
+            btnTest.UseVisualStyleBackColor = true;
+            btnTest.Click += btnTest_Click;
+            // 
+            // frmTestDatabase
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnTest);
+            Name = "frmTestDatabase";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnTest;
     }
 }

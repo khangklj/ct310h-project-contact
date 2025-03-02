@@ -28,32 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnTest = new Button();
+            btnTestConnection = new Button();
+            btnTestAuth = new Button();
             SuspendLayout();
             // 
-            // btnTest
+            // btnTestConnection
             // 
-            btnTest.Location = new Point(331, 192);
-            btnTest.Name = "btnTest";
-            btnTest.Size = new Size(136, 23);
-            btnTest.TabIndex = 0;
-            btnTest.Text = "Test connection";
-            btnTest.UseVisualStyleBackColor = true;
-            btnTest.Click += btnTest_Click;
+            btnTestConnection.Location = new Point(378, 256);
+            btnTestConnection.Margin = new Padding(3, 4, 3, 4);
+            btnTestConnection.Name = "btnTestConnection";
+            btnTestConnection.Size = new Size(155, 31);
+            btnTestConnection.TabIndex = 0;
+            btnTestConnection.Text = "Test connection";
+            btnTestConnection.UseVisualStyleBackColor = true;
+            btnTestConnection.Click += btnTest_Click;
+            // 
+            // btnTestAuth
+            // 
+            btnTestAuth.Location = new Point(409, 330);
+            btnTestAuth.Name = "btnTestAuth";
+            btnTestAuth.Size = new Size(94, 29);
+            btnTestAuth.TabIndex = 1;
+            btnTestAuth.Text = "Test auth";
+            btnTestAuth.UseVisualStyleBackColor = true;
+            btnTestAuth.Click += btnTestAuth_Click;
             // 
             // frmTestDatabase
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnTest);
+            ClientSize = new Size(914, 600);
+            Controls.Add(btnTestAuth);
+            Controls.Add(btnTestConnection);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmTestDatabase";
             Text = "Form1";
+            FormClosed += frmTestDatabase_FormClosed;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button btnTest;
+        private Button btnTestConnection;
+        private Button btnTestAuth;
     }
 }

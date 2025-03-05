@@ -27,7 +27,7 @@ namespace ct310h_project_contact
 
             if (userId.HasValue)
             {
-                AuthInfo.SetAuth(userId.Value); // Gán ID người dùng vào AuthInfo
+                AuthInfo.SetAuth(userId.Value); 
                 MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -49,7 +49,7 @@ namespace ct310h_project_contact
         {
             try
             {
-                // Kiểm tra kết nối với cơ sở dữ liệu
+                
                 if (!clsDatabase.OpenConnection())
                 {
                     MessageBox.Show("Cannot connect to database.");
@@ -60,7 +60,7 @@ namespace ct310h_project_contact
 
                 using (SqlCommand cmd = new SqlCommand(query, clsDatabase.conn))
                 {
-                    // Tránh SQL Injection bằng cách khai báo rõ kiểu dữ liệu
+                    
                     cmd.Parameters.Add("@username", SqlDbType.NVarChar, 100).Value = username;
                     cmd.Parameters.Add("@password", SqlDbType.NVarChar, 100).Value = password;
 

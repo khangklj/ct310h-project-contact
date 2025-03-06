@@ -92,6 +92,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(164, 23);
             txtPassword.TabIndex = 5;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // txtComfirm
             // 
@@ -99,6 +100,7 @@
             txtComfirm.Name = "txtComfirm";
             txtComfirm.Size = new Size(164, 23);
             txtComfirm.TabIndex = 6;
+            txtComfirm.UseSystemPasswordChar = true;
             // 
             // btnExit
             // 

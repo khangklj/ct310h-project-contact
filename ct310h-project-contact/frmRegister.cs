@@ -83,7 +83,7 @@ namespace ct310h_project_contact
             }
             if (string.IsNullOrEmpty(name))
             {
-                MessageBox.Show("Please enter username!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter name!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtName.Focus();
                 return;
             }

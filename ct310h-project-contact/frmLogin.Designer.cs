@@ -38,6 +38,7 @@ namespace ct310h_project_contact
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             llbCreateAccount = new LinkLabel();
+           
             SuspendLayout();
             // 
             // btnLogin

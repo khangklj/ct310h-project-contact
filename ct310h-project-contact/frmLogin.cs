@@ -13,9 +13,11 @@ namespace ct310h_project_contact
 {
     public partial class frmLogin : Form
     {
-        public frmLogin()
+        public frmLogin(string username = "", string password = "")
         {
             InitializeComponent();
+            txtUsername.Text = username;
+            txtPassword.Text = password;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -99,7 +101,9 @@ namespace ct310h_project_contact
 
         private void llbCreateAccount_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("link to Rigister Form!");
+            frmRegister register = new frmRegister();
+            register.Show();
+                this.Hide();
         }
     }
 }

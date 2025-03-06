@@ -38,7 +38,7 @@ namespace ct310h_project_contact
 
             if (userId.HasValue)
             {
-                AuthInfo.SetAuth(userId.Value); 
+                AuthInfo.SetAuth(userId.Value);
                 MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -60,7 +60,7 @@ namespace ct310h_project_contact
         {
             try
             {
-                
+
                 if (!clsDatabase.OpenConnection())
                 {
                     MessageBox.Show("Cannot connect to database.");
@@ -71,7 +71,7 @@ namespace ct310h_project_contact
 
                 using (SqlCommand cmd = new SqlCommand(query, clsDatabase.conn))
                 {
-                    
+
                     cmd.Parameters.Add("@username", SqlDbType.NVarChar, 100).Value = username;
                     cmd.Parameters.Add("@password", SqlDbType.NVarChar, 100).Value = password;
 
@@ -97,11 +97,9 @@ namespace ct310h_project_contact
             Application.Exit();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void llbCreateAccount_Click(object sender, EventArgs e)
         {
             MessageBox.Show("link to Rigister Form!");
         }
-
-       
     }
 }

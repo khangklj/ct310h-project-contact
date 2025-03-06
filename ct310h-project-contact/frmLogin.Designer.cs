@@ -37,7 +37,7 @@ namespace ct310h_project_contact
             label3 = new Label();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
-            linkLabel1 = new LinkLabel();
+            llbCreateAccount = new LinkLabel();
             SuspendLayout();
             // 
             // btnLogin
@@ -104,23 +104,24 @@ namespace ct310h_project_contact
             txtPassword.TabIndex = 8;
             txtPassword.UseSystemPasswordChar = true;
             // 
-            // linkLabel1
+            // llbCreateAccount
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(320, 291);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(88, 15);
-            linkLabel1.TabIndex = 9;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "No account yet";
-            linkLabel1.Click += label1_Click;
+            llbCreateAccount.AutoSize = true;
+            llbCreateAccount.Location = new Point(320, 291);
+            llbCreateAccount.Name = "llbCreateAccount";
+            llbCreateAccount.Size = new Size(89, 15);
+            llbCreateAccount.TabIndex = 9;
+            llbCreateAccount.TabStop = true;
+            llbCreateAccount.Text = "Create Account";
+            llbCreateAccount.LinkClicked += llbCreateAccount_Click;
+            
             // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
-            Controls.Add(linkLabel1);
+            Controls.Add(llbCreateAccount);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(label3);
@@ -144,6 +145,6 @@ namespace ct310h_project_contact
         private Label label3;
         private TextBox txtUsername;
         private TextBox txtPassword;
-        private LinkLabel linkLabel1;
+        private LinkLabel llbCreateAccount;
     }
 }

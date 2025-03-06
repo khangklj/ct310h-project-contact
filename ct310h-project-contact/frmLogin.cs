@@ -20,9 +20,20 @@ namespace ct310h_project_contact
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Please enter username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Focus();
+                return;
+            }
             int? userId = ValidateUser(username, password);
 
             if (userId.HasValue)
@@ -37,7 +48,7 @@ namespace ct310h_project_contact
             }
             else
             {
-                MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Incorrect account or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,7 +99,7 @@ namespace ct310h_project_contact
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("link to Rigister Form!");
         }
 
        

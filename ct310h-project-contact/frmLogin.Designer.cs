@@ -1,4 +1,6 @@
-﻿namespace ct310h_project_contact
+﻿using System.Windows.Forms;
+
+namespace ct310h_project_contact
 {
     partial class frmLogin
     {
@@ -111,6 +113,7 @@
             linkLabel1.TabIndex = 9;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "No account yet";
+            linkLabel1.Click += label1_Click;
             // 
             // frmLogin
             // 

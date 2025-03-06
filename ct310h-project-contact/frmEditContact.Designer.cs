@@ -42,6 +42,8 @@
             cboGroup = new ComboBox();
             btnSave = new Button();
             btnCancel = new Button();
+            label1 = new Label();
+            txtContactEmail = new TextBox();
             SuspendLayout();
             // 
             // lblHeader
@@ -57,7 +59,7 @@
             // lblContactID
             // 
             lblContactID.AutoSize = true;
-            lblContactID.Location = new Point(39, 81);
+            lblContactID.Location = new Point(42, 82);
             lblContactID.Name = "lblContactID";
             lblContactID.Size = new Size(30, 25);
             lblContactID.TabIndex = 1;
@@ -66,7 +68,7 @@
             // lblContactName
             // 
             lblContactName.AutoSize = true;
-            lblContactName.Location = new Point(39, 126);
+            lblContactName.Location = new Point(39, 127);
             lblContactName.Name = "lblContactName";
             lblContactName.Size = new Size(59, 25);
             lblContactName.TabIndex = 2;
@@ -75,7 +77,7 @@
             // lblPhoneNumber
             // 
             lblPhoneNumber.AutoSize = true;
-            lblPhoneNumber.Location = new Point(39, 171);
+            lblPhoneNumber.Location = new Point(39, 173);
             lblPhoneNumber.Name = "lblPhoneNumber";
             lblPhoneNumber.Size = new Size(132, 25);
             lblPhoneNumber.TabIndex = 3;
@@ -84,7 +86,7 @@
             // lblContactDescription
             // 
             lblContactDescription.AutoSize = true;
-            lblContactDescription.Location = new Point(39, 216);
+            lblContactDescription.Location = new Point(39, 284);
             lblContactDescription.Name = "lblContactDescription";
             lblContactDescription.Size = new Size(102, 25);
             lblContactDescription.TabIndex = 5;
@@ -93,7 +95,7 @@
             // lblContactGroup
             // 
             lblContactGroup.AutoSize = true;
-            lblContactGroup.Location = new Point(39, 278);
+            lblContactGroup.Location = new Point(39, 346);
             lblContactGroup.Name = "lblContactGroup";
             lblContactGroup.Size = new Size(62, 25);
             lblContactGroup.TabIndex = 6;
@@ -105,29 +107,29 @@
             txtContactID.Location = new Point(177, 78);
             txtContactID.Name = "txtContactID";
             txtContactID.Size = new Size(95, 31);
-            txtContactID.TabIndex = 7;
+            txtContactID.TabIndex = 1;
             // 
             // txtContactName
             // 
-            txtContactName.Location = new Point(177, 123);
+            txtContactName.Location = new Point(177, 124);
             txtContactName.Name = "txtContactName";
             txtContactName.Size = new Size(216, 31);
-            txtContactName.TabIndex = 8;
+            txtContactName.TabIndex = 3;
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.Location = new Point(177, 168);
+            txtPhoneNumber.Location = new Point(177, 170);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(216, 31);
-            txtPhoneNumber.TabIndex = 9;
+            txtPhoneNumber.TabIndex = 4;
             // 
             // txtContactDescription
             // 
-            txtContactDescription.Location = new Point(177, 213);
+            txtContactDescription.Location = new Point(177, 262);
             txtContactDescription.Multiline = true;
             txtContactDescription.Name = "txtContactDescription";
-            txtContactDescription.Size = new Size(216, 46);
-            txtContactDescription.TabIndex = 10;
+            txtContactDescription.Size = new Size(311, 66);
+            txtContactDescription.TabIndex = 6;
             // 
             // chkFavorite
             // 
@@ -135,43 +137,61 @@
             chkFavorite.Location = new Point(293, 81);
             chkFavorite.Name = "chkFavorite";
             chkFavorite.Size = new Size(100, 29);
-            chkFavorite.TabIndex = 11;
+            chkFavorite.TabIndex = 2;
             chkFavorite.Text = "Favorite";
             chkFavorite.UseVisualStyleBackColor = true;
             // 
             // cboGroup
             // 
             cboGroup.FormattingEnabled = true;
-            cboGroup.Location = new Point(177, 275);
+            cboGroup.Location = new Point(177, 343);
             cboGroup.Name = "cboGroup";
             cboGroup.Size = new Size(216, 33);
-            cboGroup.TabIndex = 12;
+            cboGroup.TabIndex = 7;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(86, 334);
+            btnSave.Location = new Point(82, 390);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(112, 34);
-            btnSave.TabIndex = 13;
+            btnSave.TabIndex = 8;
             btnSave.Text = "Add/Save";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(235, 334);
+            btnCancel.Location = new Point(231, 390);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(112, 34);
-            btnCancel.TabIndex = 14;
+            btnCancel.TabIndex = 9;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(42, 223);
+            label1.Name = "label1";
+            label1.Size = new Size(54, 25);
+            label1.TabIndex = 15;
+            label1.Text = "Email";
+            // 
+            // txtContactEmail
+            // 
+            txtContactEmail.Location = new Point(177, 216);
+            txtContactEmail.Name = "txtContactEmail";
+            txtContactEmail.Size = new Size(311, 31);
+            txtContactEmail.TabIndex = 5;
             // 
             // frmEditContact
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(442, 387);
+            ClientSize = new Size(524, 436);
+            Controls.Add(txtContactEmail);
+            Controls.Add(label1);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(cboGroup);
@@ -208,5 +228,7 @@
         private ComboBox cboGroup;
         private Button btnSave;
         private Button btnCancel;
+        private Label label1;
+        private TextBox txtContactEmail;
     }
 }

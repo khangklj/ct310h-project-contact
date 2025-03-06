@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvContacts = new DataGridView();
             colName = new DataGridViewTextBoxColumn();
             colPhoneNumber = new DataGridViewTextBoxColumn();
@@ -48,35 +48,36 @@
             // 
             // dgvContacts
             // 
-            dataGridViewCellStyle1.BackColor = Color.LightGray;
-            dgvContacts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.LightGray;
+            dgvContacts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvContacts.BackgroundColor = Color.White;
             dgvContacts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle2.Font = new Font("Arial", 10F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvContacts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle5.Font = new Font("Arial", 10F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvContacts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvContacts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvContacts.Columns.AddRange(new DataGridViewColumn[] { colName, colPhoneNumber, colFavorite, colID });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DarkBlue;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvContacts.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DarkBlue;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvContacts.DefaultCellStyle = dataGridViewCellStyle6;
             dgvContacts.EnableHeadersVisualStyles = false;
             dgvContacts.GridColor = Color.LightGray;
             dgvContacts.Location = new Point(3, 3);
             dgvContacts.Name = "dgvContacts";
             dgvContacts.ReadOnly = true;
             dgvContacts.RowHeadersWidth = 62;
-            dgvContacts.Size = new Size(515, 346);
+            dgvContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvContacts.Size = new Size(596, 346);
             dgvContacts.TabIndex = 0;
             dgvContacts.SelectionChanged += dgvContacts_SelectionChanged;
             // 
@@ -121,7 +122,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(24, 413);
+            btnAdd.Location = new Point(68, 413);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(112, 34);
             btnAdd.TabIndex = 1;
@@ -132,7 +133,7 @@
             // btnEdit
             // 
             btnEdit.Enabled = false;
-            btnEdit.Location = new Point(142, 413);
+            btnEdit.Location = new Point(186, 413);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(112, 34);
             btnEdit.TabIndex = 2;
@@ -143,7 +144,7 @@
             // btnDelete
             // 
             btnDelete.Enabled = false;
-            btnDelete.Location = new Point(260, 413);
+            btnDelete.Location = new Point(304, 413);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(112, 34);
             btnDelete.TabIndex = 3;
@@ -154,7 +155,7 @@
             // btnOpen
             // 
             btnOpen.Enabled = false;
-            btnOpen.Location = new Point(378, 413);
+            btnOpen.Location = new Point(422, 413);
             btnOpen.Name = "btnOpen";
             btnOpen.Size = new Size(112, 34);
             btnOpen.TabIndex = 4;
@@ -165,7 +166,7 @@
             // lblPageNumber
             // 
             lblPageNumber.AutoSize = true;
-            lblPageNumber.Location = new Point(209, 378);
+            lblPageNumber.Location = new Point(253, 378);
             lblPageNumber.Name = "lblPageNumber";
             lblPageNumber.Size = new Size(52, 25);
             lblPageNumber.TabIndex = 5;
@@ -174,9 +175,9 @@
             // 
             // btnPrevious
             // 
-            btnPrevious.Location = new Point(115, 373);
+            btnPrevious.Location = new Point(150, 373);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(88, 34);
+            btnPrevious.Size = new Size(100, 34);
             btnPrevious.TabIndex = 6;
             btnPrevious.Text = "Previous";
             btnPrevious.UseVisualStyleBackColor = true;
@@ -184,9 +185,9 @@
             // 
             // btnNext
             // 
-            btnNext.Location = new Point(309, 373);
+            btnNext.Location = new Point(344, 373);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(88, 34);
+            btnNext.Size = new Size(100, 34);
             btnNext.TabIndex = 7;
             btnNext.Text = "Next";
             btnNext.UseVisualStyleBackColor = true;
@@ -205,7 +206,7 @@
             Controls.Add(btnAdd);
             Controls.Add(dgvContacts);
             Name = "ucContactManagement";
-            Size = new Size(521, 450);
+            Size = new Size(602, 450);
             Load += ucContactManagement_Load;
             ((System.ComponentModel.ISupportInitialize)dgvContacts).EndInit();
             ResumeLayout(false);

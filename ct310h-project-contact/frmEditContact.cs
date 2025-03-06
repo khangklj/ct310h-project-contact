@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -21,6 +22,7 @@ namespace ct310h_project_contact
         public frmEditContact(int contactId = -1)
         {
             InitializeComponent();
+            loadContactGroup();
 
             if (contactId == -1)
             {
@@ -41,8 +43,6 @@ namespace ct310h_project_contact
                 loadContact(contactId);
                 this.isEditing = true;
             }
-
-            loadContactGroup();
         }
 
         private int getNewContactId()
@@ -70,6 +70,7 @@ namespace ct310h_project_contact
             try
             {
                 clsDatabase.OpenConnection();
+
                 string query = "SELECT * FROM Contact WHERE Contact_ID = @Contact_ID";
 
                 SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
@@ -80,6 +81,7 @@ namespace ct310h_project_contact
                 {
                     txtContactName.Text = reader["Contact_Name"].ToString();
                     txtPhoneNumber.Text = reader["Contact_PhoneNumber"].ToString();
+                    txtContactEmail.Text = reader["Contact_Email"].ToString();
                     chkFavorite.Checked = Convert.ToBoolean(reader["Contact_Favorite"]);
                     txtContactDescription.Text = reader["Contact_Description"].ToString();
 
@@ -137,60 +139,82 @@ namespace ct310h_project_contact
         {
             try
             {
-                clsDatabase.OpenConnection();
-
-                int contactId = Int32.Parse(txtContactID.Text);
-                string name = txtContactName.Text;
-                string phoneNumber = txtPhoneNumber.Text;
+                int contactId = this.isEditing ? Int32.Parse(txtContactID.Text) : getNewContactId();
+                string name = txtContactName.Text.Trim();
+                string phoneNumber = txtPhoneNumber.Text.Trim();
+                string email = txtContactEmail.Text.Trim();
                 bool favorite = chkFavorite.Checked;
-                string description = txtContactDescription.Text;
+                string description = txtContactDescription.Text.Trim();
                 int? accountId = AuthInfo.accountID;
-                int? contactGroupId = (int?) cboGroup.SelectedValue;
+                int? contactGroupId = (int?)cboGroup.SelectedValue;
 
-                if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(phoneNumber))
+                if (string.IsNullOrEmpty(name))
                 {
-                    MessageBox.Show("Name and Phone Number are required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Contact Name is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                if (string.IsNullOrEmpty(phoneNumber))
+                {
+                    MessageBox.Show("Phone Number is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!Regex.IsMatch(phoneNumber, @"^\d{10}$"))
+                {
+                    MessageBox.Show("Phone Number must be 10 digits.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!string.IsNullOrEmpty(email))
+                {
+                    if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                    {
+                        MessageBox.Show("Invalid email format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
                 string query;
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = clsDatabase.conn;
 
                 if (this.isEditing)
                 {
                     query = @"UPDATE Contact 
                       SET Contact_Name = @Name, 
                           Contact_PhoneNumber = @PhoneNumber, 
+                          Contact_Email = @Email,
                           Contact_Favorite = @Favorite, 
                           Contact_Description = @Description, 
                           Account_ID = @AccountID, 
                           ContactGroup_ID = @GroupID 
                       WHERE Contact_ID = @ContactID";
-                    cmd.Parameters.AddWithValue("@ContactID", contactId);
                 }
                 else
                 {
-                    query = @"INSERT INTO Contact (Contact_ID, Contact_Name, Contact_PhoneNumber, Contact_Favorite, Contact_Description, Account_ID, ContactGroup_ID)
-                      VALUES (@ContactID, @Name, @PhoneNumber, @Favorite, @Description, @AccountID, @GroupID)";
-                    contactId = getNewContactId();
-                    cmd.Parameters.AddWithValue("@ContactID", contactId);
+                    query = @"INSERT INTO Contact (Contact_ID, Contact_Name, Contact_PhoneNumber, Contact_Email, Contact_Favorite, Contact_Description, Account_ID, ContactGroup_ID)
+                      VALUES (@ContactID, @Name, @PhoneNumber, @Email, @Favorite, @Description, @AccountID, @GroupID)";
                 }
 
-                cmd.CommandText = query;
+                clsDatabase.OpenConnection();
+                SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
+
+                cmd.Parameters.AddWithValue("@ContactID", contactId);
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@Favorite", favorite);
                 cmd.Parameters.AddWithValue("@Description", (object)description ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@AccountID", accountId);
-                cmd.Parameters.AddWithValue("@GroupID", (object)contactGroupId ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@AccountID", accountId ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@GroupID", contactGroupId ?? (object)DBNull.Value);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
+
+                clsDatabase.CloseConnection();
 
                 if (rowsAffected > 0)
                 {
                     MessageBox.Show("Contact saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK; // Close form on success
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
@@ -198,12 +222,12 @@ namespace ct310h_project_contact
                     MessageBox.Show("Failed to save contact.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                clsDatabase.CloseConnection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while saving the contact:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

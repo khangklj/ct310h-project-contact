@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace ct310h_project_contact
     public partial class ucContactManagement : UserControl
     {
         private int currentPage = 1;
-        private int pageSize = 5;
+        private int pageSize = 3;
         private int totalRecords = 0;
         private int totalPages = 0;
 
@@ -35,22 +36,31 @@ namespace ct310h_project_contact
                 clsDatabase.OpenConnection();
 
                 // Count total records first
-                string countQuery = "SELECT COUNT(*) FROM Contact";
-                SqlCommand countCmd = new SqlCommand(countQuery, clsDatabase.conn);
-                totalRecords = (int)countCmd.ExecuteScalar();
+                totalRecords = CountTotalRecords();
                 totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
 
                 // SQL query for pagination using OFFSET and FETCH NEXT
-                string query = $@"
-            SELECT Contact_ID, Contact_Name, Contact_PhoneNumber, Contact_Favorite 
-            FROM Contact 
-            ORDER BY Contact_ID 
-            OFFSET {(page - 1) * pageSize} ROWS 
-            FETCH NEXT {pageSize} ROWS ONLY";
+                string query = @"
+                    SELECT Contact_ID, Contact_Name, Contact_PhoneNumber, Contact_Favorite 
+                    FROM Contact 
+                    WHERE Account_ID = @Account_ID
+                    ORDER BY Contact_ID 
+                    OFFSET @Offset ROWS 
+                    FETCH NEXT @PageSize ROWS ONLY";
 
                 DataTable dt = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter(query, clsDatabase.conn);
+                SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
+
+                // Bind parameters
+                cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+                cmd.Parameters.AddWithValue("@Offset", (page - 1) * pageSize);
+                cmd.Parameters.AddWithValue("@PageSize", pageSize);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
+
+                dgvContacts.AutoGenerateColumns = false;
+                dgvContacts.DataSource = dt;
 
                 dgvContacts.AutoGenerateColumns = false;
                 dgvContacts.DataSource = dt;
@@ -68,12 +78,36 @@ namespace ct310h_project_contact
             }
         }
 
+        private int CountTotalRecords()
+        {
+            try
+            {
+                clsDatabase.OpenConnection();
+
+                string countQuery = "SELECT COUNT(*) FROM Contact WHERE ACCOUNT_ID = @Account_ID";
+                SqlCommand countCmd = new SqlCommand(countQuery, clsDatabase.conn);
+                countCmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+
+                int countRecords = (int)countCmd.ExecuteScalar();
+
+                clsDatabase.CloseConnection();
+
+                return countRecords;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading contacts:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return 0;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmEditContact frm = new frmEditContact();
             frm.ShowDialog();
+            currentPage = totalPages;
             // Reload
-            ucContactManagement_Load(sender, e);
+            LoadContacts(currentPage);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -81,7 +115,7 @@ namespace ct310h_project_contact
             frmEditContact frm = new frmEditContact(Convert.ToInt16(dgvContacts.SelectedRows[0].Cells["colID"].Value?.ToString()));
             frm.ShowDialog();
             // Reload
-            ucContactManagement_Load(sender, e);
+            LoadContacts(currentPage);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -117,10 +151,17 @@ namespace ct310h_project_contact
                     {
                         MessageBox.Show("An error occurred while deleting contacts:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
 
-                // Reload
-                ucContactManagement_Load(sender, e);
+                    int remainingRecords = CountTotalRecords();
+                    int totalPagesAfterDeletion = (int)Math.Ceiling((double)remainingRecords / pageSize);
+
+                    if (currentPage > totalPagesAfterDeletion)
+                    {
+                        currentPage = totalPagesAfterDeletion;
+                    }
+
+                    LoadContacts(currentPage);
+                }
             }
             else
             {

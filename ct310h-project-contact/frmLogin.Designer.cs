@@ -109,12 +109,11 @@ namespace ct310h_project_contact
             llbCreateAccount.AutoSize = true;
             llbCreateAccount.Location = new Point(320, 291);
             llbCreateAccount.Name = "llbCreateAccount";
-            llbCreateAccount.Size = new Size(89, 15);
+            llbCreateAccount.Size = new Size(121, 15);
             llbCreateAccount.TabIndex = 9;
             llbCreateAccount.TabStop = true;
-            llbCreateAccount.Text = "Create Account";
+            llbCreateAccount.Text = "Create a new account";
             llbCreateAccount.LinkClicked += llbCreateAccount_Click;
-            
             // 
             // frmLogin
             // 

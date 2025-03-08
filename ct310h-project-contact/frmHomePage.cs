@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,33 +15,81 @@ namespace ct310h_project_contact
 {
     public partial class frmHomePage : Form
     {
-        //private string avatarUrl = "https://github-production-user-asset-6210df.s3.amazonaws.com/160006238/420578901-7242486e-31f0-445b-8413-adec87813679.jpg";
-        private string avatarUrl = "https://img.freepik.com/premium-vector/avatar-icon0002_750950-43.jpg";
+        private string avatarUrl = "https://github-production-user-asset-6210df.s3.amazonaws.com/160006238/420578901-7242486e-31f0-445b-8413-adec87813679.jpg";
+        //private string avatarUrl = "https://img.freepik.com/premium-vector/avatar-icon0002_750950-43.jpg";
 
         public frmHomePage()
         {
             InitializeComponent();
-            rbtnAccount.Text = "";
-            rbtnAccount.BackgroundImage = LoadImageFromUrl(rbtnAccount, avatarUrl);
-            rbtnAccount.BackgroundImageLayout = ImageLayout.Stretch;
+
+            SetAccountName();
+            LoadAvatar();
         }
 
-        private Image LoadImageFromUrl(RJControls.RJButton button, string url)
+        private void SetAccountName()
         {
             try
             {
-                using (WebClient webClient = new WebClient())
+                clsDatabase.OpenConnection();
+
+                string query = "SELECT Account_Name FROM Account WHERE Account_ID = @Account_ID";
+
+                SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
+                cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+
+                object result = cmd.ExecuteScalar();
+
+                lblAccountName.Location = new Point(
+                    rbtnAccount.Left + (rbtnAccount.Width - lblAccountName.Width) / 2,
+                    rbtnAccount.Bottom + 5 // 5px spacing below the button
+                );
+                if (result != null)
                 {
-                    byte[] imageData = webClient.DownloadData(url);
-                    using (System.IO.MemoryStream stream = new System.IO.MemoryStream(imageData))
-                    {
-                        return Image.FromStream(stream);
-                    }
+                    lblAccountName.Text = result.ToString();
+
                 }
-            }
-            catch
+                else
+                {
+                    lblAccountName.Text = "Unknown User";
+                }
+
+                clsDatabase.CloseConnection();
+            } 
+            catch (Exception ex) 
             {
-                return new Bitmap(button.Width, button.Height); // Return empty image if download fails
+                MessageBox.Show("Error loading account name: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private async void LoadAvatar()
+        {
+            string localImagePath = await DownloadAvatarAsync(avatarUrl);
+
+            if (!string.IsNullOrEmpty(localImagePath) && File.Exists(localImagePath))
+            {
+                rbtnAccount.ImageLocation = localImagePath;
+                rbtnAccount.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+        }
+
+        private static async Task<string> DownloadAvatarAsync(string avatarUrl)
+        {
+            string localImagePath = Path.Combine(Application.StartupPath, "default_avatar.jpg");
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    byte[] imageData = await client.GetByteArrayAsync(avatarUrl);
+                    await File.WriteAllBytesAsync(localImagePath, imageData);
+                }
+                return localImagePath;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error downloading image: " + ex.Message);
+                return null;
             }
         }
 
@@ -56,19 +105,23 @@ namespace ct310h_project_contact
             this.Hide();
         }
 
-        private void rbtnAccount_Click(object sender, EventArgs e)
-        {
-            cmsAccount.Show(rbtnAccount, new Point(rbtnAccount.Width / 2, rbtnAccount.Height / 2));
-        }
-
         private void btnManageContact_Click(object sender, EventArgs e)
         {
+            ucContactManagement contactManagementControl = new ucContactManagement();
+            contactManagementControl.Location = new Point(178, 50);
+
+            this.Controls.Add(contactManagementControl);
 
         }
 
         private void btnManageGroup_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void rbtnAccount_Click(object sender, EventArgs e)
+        {
+            cmsAccount.Show(rbtnAccount, new Point(rbtnAccount.Width / 2, rbtnAccount.Height / 2));
         }
     }
 }

@@ -39,13 +39,15 @@ namespace ct310h_project_contact
             settingsToolStripMenuItem = new ToolStripMenuItem();
             signOutToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            rbtnAccount = new RJControls.RJButton();
+            rbtnAccount = new RoundButton();
+            lblAccountName = new Label();
             cmsAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)rbtnAccount).BeginInit();
             SuspendLayout();
             // 
             // btnManageContact
             // 
-            btnManageContact.Location = new Point(22, 82);
+            btnManageContact.Location = new Point(22, 54);
             btnManageContact.Name = "btnManageContact";
             btnManageContact.Size = new Size(150, 34);
             btnManageContact.TabIndex = 0;
@@ -55,7 +57,7 @@ namespace ct310h_project_contact
             // 
             // btnManageGroup
             // 
-            btnManageGroup.Location = new Point(22, 141);
+            btnManageGroup.Location = new Point(22, 97);
             btnManageGroup.Name = "btnManageGroup";
             btnManageGroup.Size = new Size(150, 34);
             btnManageGroup.TabIndex = 1;
@@ -67,7 +69,7 @@ namespace ct310h_project_contact
             // 
             lblHomePage.AutoSize = true;
             lblHomePage.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHomePage.Location = new Point(277, 9);
+            lblHomePage.Location = new Point(336, 9);
             lblHomePage.Name = "lblHomePage";
             lblHomePage.Size = new Size(171, 38);
             lblHomePage.TabIndex = 2;
@@ -108,29 +110,33 @@ namespace ct310h_project_contact
             // 
             // rbtnAccount
             // 
-            rbtnAccount.BackColor = Color.MediumSlateBlue;
-            rbtnAccount.BackgroundColor = Color.MediumSlateBlue;
-            rbtnAccount.BorderColor = Color.PaleVioletRed;
-            rbtnAccount.BorderRadius = 32;
-            rbtnAccount.BorderSize = 0;
-            rbtnAccount.FlatAppearance.BorderSize = 0;
-            rbtnAccount.FlatStyle = FlatStyle.Flat;
-            rbtnAccount.ForeColor = Color.White;
-            rbtnAccount.HoverColor = Color.FromArgb(100, 128, 128, 128);
-            rbtnAccount.Location = new Point(699, 67);
+            rbtnAccount.BackColor = Color.Transparent;
+            rbtnAccount.BorderSize = 2;
+            rbtnAccount.CornerRadius = 32;
+            rbtnAccount.Location = new Point(846, 54);
             rbtnAccount.Name = "rbtnAccount";
             rbtnAccount.Size = new Size(64, 64);
-            rbtnAccount.TabIndex = 4;
-            rbtnAccount.Text = "Avatar";
-            rbtnAccount.TextColor = Color.White;
-            rbtnAccount.UseVisualStyleBackColor = false;
+            rbtnAccount.SizeMode = PictureBoxSizeMode.Zoom;
+            rbtnAccount.TabIndex = 3;
+            rbtnAccount.TabStop = false;
             rbtnAccount.Click += rbtnAccount_Click;
+            // 
+            // lblAccountName
+            // 
+            lblAccountName.AutoSize = true;
+            lblAccountName.Location = new Point(784, 121);
+            lblAccountName.Name = "lblAccountName";
+            lblAccountName.Size = new Size(126, 25);
+            lblAccountName.TabIndex = 4;
+            lblAccountName.Text = "Account name";
+            lblAccountName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmHomePage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(922, 526);
+            Controls.Add(lblAccountName);
             Controls.Add(rbtnAccount);
             Controls.Add(lblHomePage);
             Controls.Add(btnManageGroup);
@@ -138,6 +144,7 @@ namespace ct310h_project_contact
             Name = "frmHomePage";
             Text = "Homepage";
             cmsAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)rbtnAccount).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -152,6 +159,7 @@ namespace ct310h_project_contact
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem signOutToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
-        private RJControls.RJButton rbtnAccount;
+        private RoundButton rbtnAccount;
+        private Label lblAccountName;
     }
 }

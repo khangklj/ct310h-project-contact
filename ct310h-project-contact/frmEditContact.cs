@@ -153,6 +153,12 @@ namespace ct310h_project_contact
                     MessageBox.Show("Contact Name is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                if (string.IsNullOrEmpty(email))
+                {
+                    MessageBox.Show("Contact email is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtContactEmail.Focus();
+                    return;
+                }
 
                 if (string.IsNullOrEmpty(phoneNumber))
                 {
@@ -163,6 +169,7 @@ namespace ct310h_project_contact
                 if (!Regex.IsMatch(phoneNumber, @"^\d{10}$"))
                 {
                     MessageBox.Show("Phone Number must be 10 digits.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtContactEmail.Focus();
                     return;
                 }
 

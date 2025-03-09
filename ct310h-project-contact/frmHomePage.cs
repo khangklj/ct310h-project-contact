@@ -15,15 +15,11 @@ namespace ct310h_project_contact
 {
     public partial class frmHomePage : Form
     {
-        private string avatarUrl = "https://github-production-user-asset-6210df.s3.amazonaws.com/160006238/420578901-7242486e-31f0-445b-8413-adec87813679.jpg";
-        //private string avatarUrl = "https://img.freepik.com/premium-vector/avatar-icon0002_750950-43.jpg";
-
         public frmHomePage()
         {
             InitializeComponent();
 
             SetAccountName();
-            LoadAvatar();
         }
 
         private void SetAccountName()
@@ -61,38 +57,7 @@ namespace ct310h_project_contact
             }
 
         }
-
-        private async void LoadAvatar()
-        {
-            string localImagePath = await DownloadAvatarAsync(avatarUrl);
-
-            if (!string.IsNullOrEmpty(localImagePath) && File.Exists(localImagePath))
-            {
-                rbtnAccount.ImageLocation = localImagePath;
-                rbtnAccount.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-        }
-
-        private static async Task<string> DownloadAvatarAsync(string avatarUrl)
-        {
-            string localImagePath = Path.Combine(Application.StartupPath, "default_avatar.jpg");
-
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    byte[] imageData = await client.GetByteArrayAsync(avatarUrl);
-                    await File.WriteAllBytesAsync(localImagePath, imageData);
-                }
-                return localImagePath;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error downloading image: " + ex.Message);
-                return null;
-            }
-        }
-
+                
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -107,11 +72,10 @@ namespace ct310h_project_contact
 
         private void btnManageContact_Click(object sender, EventArgs e)
         {
-            ucContactManagement contactManagementControl = new ucContactManagement();
-            contactManagementControl.Location = new Point(178, 50);
+            //ucContactManagement contactManagementControl = new ucContactManagement();
+            //contactManagementControl.Location = new Point(178, 50);
 
-            this.Controls.Add(contactManagementControl);
-
+            //this.Controls.Add(contactManagementControl);
         }
 
         private void btnManageGroup_Click(object sender, EventArgs e)
@@ -121,7 +85,7 @@ namespace ct310h_project_contact
 
         private void rbtnAccount_Click(object sender, EventArgs e)
         {
-            cmsAccount.Show(rbtnAccount, new Point(rbtnAccount.Width / 2, rbtnAccount.Height / 2));
+            //cmsAccount.Show(rbtnAccount, new Point(rbtnAccount.Width / 2, rbtnAccount.Height / 2));
         }
     }
 }

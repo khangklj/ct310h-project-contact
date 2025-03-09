@@ -113,6 +113,7 @@ namespace ct310h_project_contact
             rbtnAccount.BackColor = Color.Transparent;
             rbtnAccount.BorderSize = 2;
             rbtnAccount.CornerRadius = 32;
+            rbtnAccount.Image = Properties.Resources._420578901_7242486e_31f0_445b_8413_adec87813679;
             rbtnAccount.Location = new Point(846, 54);
             rbtnAccount.Name = "rbtnAccount";
             rbtnAccount.Size = new Size(64, 64);

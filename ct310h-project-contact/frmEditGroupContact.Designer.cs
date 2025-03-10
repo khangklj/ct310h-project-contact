@@ -1,6 +1,6 @@
 ﻿namespace ct310h_project_contact
 {
-    partial class frmGroupEditContact
+    partial class frmEditGroupContact
     {
         /// <summary>
         /// Required designer variable.
@@ -119,7 +119,7 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
-            // frmEditGroupContactcs
+            // frmGroupEditContact
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -133,7 +133,7 @@
             Controls.Add(lblContactGroup_Name);
             Controls.Add(lblContactGroup_ID);
             Controls.Add(lblContactGropManagement);
-            Name = "frmEditGroupContactcs";
+            Name = "frmGroupEditContact";
             Text = "frmEditGroupContactcs";
             ResumeLayout(false);
             PerformLayout();

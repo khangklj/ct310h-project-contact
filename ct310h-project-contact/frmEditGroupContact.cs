@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace ct310h_project_contact
 {
-    public partial class frmGroupEditContact : Form
+    public partial class frmEditGroupContact : Form
     {
 
-        private int account_ID = (int)AuthInfo.AccountID;
-        private bool isEditing;
-        private int contactGroupID;
+        private readonly int? account_ID = AuthInfo.AccountID; //why readonly ?
+        private readonly bool isEditing;
+        private readonly int contactGroupID;
 
 
-        public frmGroupEditContact(int contactGroupID = -1)
+        public frmEditGroupContact(int contactGroupID = -1)
         {
             InitializeComponent();
             if (contactGroupID == -1)
@@ -52,15 +52,10 @@ namespace ct310h_project_contact
 
                 if (string.IsNullOrEmpty(contactGroupName))
                 {
-                    MessageBox.Show("Contact Group Name is required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Name is required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (string.IsNullOrEmpty(contactGroupDescription))
-                {
-                    MessageBox.Show("Contact Group Description is required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
                 clsDatabase.OpenConnection();
 
                 if (isEditing)
@@ -76,7 +71,7 @@ namespace ct310h_project_contact
                     comm.Parameters.AddWithValue("@ContactGroup_Description", rtxContactGroup_Description.Text);
                     comm.Parameters.AddWithValue("@Account_ID", account_ID);
                     comm.ExecuteNonQuery();
-                    MessageBox.Show("Contact Group edited successfully", "Annoucement", MessageBoxButtons.OK);
+                    MessageBox.Show("Contact Group edited successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 else
@@ -90,7 +85,7 @@ namespace ct310h_project_contact
                     comm.Parameters.AddWithValue("@ContactGroup_Description", rtxContactGroup_Description.Text);
                     comm.Parameters.AddWithValue("@Account_ID", account_ID);
                     comm.ExecuteNonQuery();
-                    MessageBox.Show("Contact Group added successfully", "Annoucement", MessageBoxButtons.OK);
+                    MessageBox.Show("Contact Group added successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetAddEditContactGroup();
 
                 }

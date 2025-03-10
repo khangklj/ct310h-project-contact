@@ -14,7 +14,7 @@ namespace ct310h_project_contact
     public partial class ucContactGroupManagement : UserControl
     {
 
-        int account_ID = (int)AuthInfo.AccountID;
+        private readonly int? account_ID = AuthInfo.AccountID;
 
         public ucContactGroupManagement()
         {
@@ -24,10 +24,7 @@ namespace ct310h_project_contact
         private void ucContactGroupManagement_Load(object sender, EventArgs e)
         {
             LoadDataContactGroup();
-            btnOpen.Enabled = false;
-            btnEdit.Enabled = false;
-            btnDelete.Enabled = false;
-
+            enableEditDelete(false);
         }
 
         private void LoadDataContactGroup()
@@ -67,6 +64,11 @@ namespace ct310h_project_contact
         {
             try
             {
+                // Save currently selected contact ID if available
+                int? selectedContactID = lvwContactFollowingGroup.SelectedItems.Count > 0
+                    ? Convert.ToInt32(lvwContactFollowingGroup.SelectedItems[0].SubItems[0].Text)
+                    : (int?)null;
+
                 String query = @"
                             SELECT Contact_ID, Contact_Name, Contact_Email, Contact_PhoneNumber, Contact_Favorite, Contact_Description
                             FROM Contact
@@ -90,42 +92,55 @@ namespace ct310h_project_contact
                     item.SubItems.Add(row["Contact_Description"].ToString());
 
                     lvwContactFollowingGroup.Items.Add(item);
+
+                    // Restore previous selection
+                    if (selectedContactID.HasValue && selectedContactID.Value.ToString() == row["Contact_ID"].ToString())
+                    {
+                        item.Selected = true;
+                    }
                 }
+
+               
             } catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmGroupEditContact frm = new frmGroupEditContact();
+            frmEditGroupContact frm = new frmEditGroupContact();
             frm.ShowDialog();
             LoadDataContactGroup();
         }
 
         private void lvwContactGroupManagement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lvwContactGroupManagement.SelectedItems.Count > 0)
+            try
             {
-                LoadContactFollowingGroup(Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text));
-                btnEdit.Enabled = true;
-                btnDelete.Enabled = true;
-            }
-            else
+                if (lvwContactGroupManagement.SelectedItems.Count > 0)
+                {
+                    enableEditDelete(true);
+                    LoadContactFollowingGroup(Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text));
+                }
+            } catch (Exception ex)
             {
-                lvwContactFollowingGroup.Items.Clear();
-                btnEdit.Enabled = false;
-                btnDelete.Enabled = false;
+                MessageBox.Show("Error when selecting contact group", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmGroupEditContact frm = new frmGroupEditContact(Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text.ToString()));
-            frm.ShowDialog();
-            LoadDataContactGroup();
+            if (lvwContactGroupManagement.SelectedItems.Count > 0) {
+                frmEditGroupContact frm = new frmEditGroupContact(Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text.ToString()));
+                frm.ShowDialog();
+                LoadDataContactGroup();
+            } else
+            {
+                MessageBox.Show("Please select a contact group to edit.", "No selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -164,24 +179,44 @@ namespace ct310h_project_contact
                     }
 
                 }
-                else
-                {
-                    MessageBox.Show("Please select at least one row to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                
+                
 
 
+            } else
+            {
+               
+                MessageBox.Show("Please select at least one row to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+           
             }
         }
 
         private void lvwContactFollowingGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lvwContactFollowingGroup.SelectedItems.Count > 0)
+            try
             {
-                btnOpen.Enabled = true;
-            } else
+                if (lvwContactFollowingGroup.SelectedItems.Count >= 0)
+                {
+                    enableEditDelete(false);
+
+                    if (lvwContactFollowingGroup.SelectedItems.Count > 0)
+                    {
+                        btnOpen.Enabled = true;
+
+                    }
+                    else
+                    {
+                        enableEditDelete(true);
+
+                        btnOpen.Enabled = false;
+                    }
+                }
+            } catch (Exception ex)
             {
-                btnOpen.Enabled = false;
+                MessageBox.Show("Error when selecting Contact", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
+            
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -198,5 +233,12 @@ namespace ct310h_project_contact
                 MessageBox.Show("Error: \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void enableEditDelete(bool enable)
+        {
+            btnEdit.Enabled = enable ? true : false;
+            btnDelete.Enabled = enable ? true : false;
+        }
+
     }
 }

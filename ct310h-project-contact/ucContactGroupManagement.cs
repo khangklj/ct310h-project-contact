@@ -19,12 +19,12 @@ namespace ct310h_project_contact
         public ucContactGroupManagement()
         {
             InitializeComponent();
+            ResetIndices();
         }
 
         private void ucContactGroupManagement_Load(object sender, EventArgs e)
         {
             LoadDataContactGroup();
-            enableEditDelete(false);
         }
 
         private void LoadDataContactGroup()
@@ -78,7 +78,7 @@ namespace ct310h_project_contact
                 SqlDataAdapter da = new SqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-            
+
                 lvwContactFollowingGroup.Items.Clear();
                 foreach (DataRow row in dt.Rows)
                 {
@@ -100,8 +100,9 @@ namespace ct310h_project_contact
                     }
                 }
 
-               
-            } catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -114,6 +115,7 @@ namespace ct310h_project_contact
             frmEditGroupContact frm = new frmEditGroupContact();
             frm.ShowDialog();
             LoadDataContactGroup();
+            ResetIndices();
         }
 
         private void lvwContactGroupManagement_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,22 +124,31 @@ namespace ct310h_project_contact
             {
                 if (lvwContactGroupManagement.SelectedItems.Count > 0)
                 {
-                    enableEditDelete(true);
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
                     LoadContactFollowingGroup(Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text));
                 }
-            } catch (Exception ex)
+                else
+                {
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                }
+            } catch (Exception)
             {
-                MessageBox.Show("Error when selecting contact group", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error when loading contacts", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (lvwContactGroupManagement.SelectedItems.Count > 0) {
+            if (lvwContactGroupManagement.SelectedItems.Count > 0)
+            {
                 frmEditGroupContact frm = new frmEditGroupContact(Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text.ToString()));
                 frm.ShowDialog();
                 LoadDataContactGroup();
-            } else
+                ResetIndices();
+            }
+            else
             {
                 MessageBox.Show("Please select a contact group to edit.", "No selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -147,8 +158,7 @@ namespace ct310h_project_contact
         {
             if (lvwContactGroupManagement.SelectedItems.Count > 0)
             {
-                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected contact group?",
-                                                      "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected contact group?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     try
@@ -172,6 +182,7 @@ namespace ct310h_project_contact
                         clsDatabase.CloseConnection();
                         LoadDataContactGroup();
                         MessageBox.Show("Selected contact group deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ResetIndices();
                     }
                     catch (Exception ex)
                     {
@@ -179,44 +190,23 @@ namespace ct310h_project_contact
                     }
 
                 }
-                
-                
-
-
-            } else
+            }
+            else
             {
-               
                 MessageBox.Show("Please select at least one row to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           
             }
         }
 
         private void lvwContactFollowingGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if (lvwContactFollowingGroup.SelectedIndices.Count > 0)
             {
-                if (lvwContactFollowingGroup.SelectedItems.Count >= 0)
-                {
-                    enableEditDelete(false);
-
-                    if (lvwContactFollowingGroup.SelectedItems.Count > 0)
-                    {
-                        btnOpen.Enabled = true;
-
-                    }
-                    else
-                    {
-                        enableEditDelete(true);
-
-                        btnOpen.Enabled = false;
-                    }
-                }
-            } catch (Exception ex)
-            {
-                MessageBox.Show("Error when selecting Contact", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnOpen.Enabled = true;
             }
-            
-            
+            else
+            {
+                btnOpen.Enabled = false;
+            }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -228,17 +218,33 @@ namespace ct310h_project_contact
                     frmContactDetails frm = new frmContactDetails(Convert.ToInt32(lvwContactFollowingGroup.SelectedItems[0].SubItems[0].Text));
                     frm.ShowDialog();
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error: \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void enableEditDelete(bool enable)
+        private void lvwContactGroupManagement_Enter(object sender, EventArgs e)
         {
-            btnEdit.Enabled = enable ? true : false;
-            btnDelete.Enabled = enable ? true : false;
+            lvwContactFollowingGroup.SelectedIndices.Clear();
+            btnOpen.Enabled = false;
         }
 
+        private void lvwContactFollowingGroup_Enter(object sender, EventArgs e)
+        {
+            lvwContactGroupManagement.SelectedIndices.Clear();
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        private void ResetIndices()
+        {
+            lvwContactFollowingGroup.SelectedIndices.Clear();
+            lvwContactGroupManagement.SelectedIndices.Clear();
+            btnOpen.Enabled = false;
+            btnDelete.Enabled = false;
+            btnEdit.Enabled=false;
+        }
     }
 }

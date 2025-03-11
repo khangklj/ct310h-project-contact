@@ -11,6 +11,7 @@ Create Table Account (
 	Account_UserName nvarchar(100) unique not null,
 	Account_Password nvarchar(100) not null,
 	Account_Name nvarchar(100) not null,
+	Account_Avatar varbinary(max), 
 );
 
 Create Table ContactGroup (

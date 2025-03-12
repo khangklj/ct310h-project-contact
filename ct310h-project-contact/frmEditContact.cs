@@ -160,16 +160,10 @@ namespace ct310h_project_contact
                     return;
                 }
 
-                if (string.IsNullOrEmpty(phoneNumber))
-                {
-                    MessageBox.Show("Phone Number is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
-                if (!Regex.IsMatch(phoneNumber, @"^\d{10}$"))
+                if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text) && !Regex.IsMatch(txtPhoneNumber.Text, @"^\d+$"))
                 {
-                    MessageBox.Show("Phone Number must be 10 digits.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtContactEmail.Focus();
+                    MessageBox.Show("Phone Number must be numeric!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

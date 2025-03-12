@@ -161,11 +161,12 @@ namespace ct310h_project_contact
                 }
 
 
-                if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text) && !Regex.IsMatch(txtPhoneNumber.Text, @"^\d+$"))
+                if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text) && !Regex.IsMatch(txtPhoneNumber.Text, @"^0\d{9}$"))
                 {
-                    MessageBox.Show("Phone Number must be numeric!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Phone Number must be exactly 10 digits and start with 0!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
 
                 if (!string.IsNullOrEmpty(email))
                 {

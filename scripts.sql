@@ -65,3 +65,8 @@ INSERT INTO Contact (Contact_ID, Contact_Name, Contact_Email, Contact_PhoneNumbe
 (8, 'Sophia Martinez', 'sophia.martinez@example.com', '1234567897', 0, 'Neighbor', 3, NULL),
 (9, 'Mia Garcia', 'mia.garcia@example.com', '1234567898', 1, 'Close friend', 1, 2),
 (10, 'James Taylor', 'james.taylor@example.com', '1234567899', 0, 'Family friend', 3, 1);
+
+ALTER TABLE Contact DROP CONSTRAINT chk_contact_phonenumber;
+
+ALTER TABLE Contact ADD CONSTRAINT chk_contact_phonenumber
+CHECK (Contact_PhoneNumber IS NULL OR Contact_PhoneNumber = '' OR Contact_PhoneNumber LIKE '%[0-9]%');

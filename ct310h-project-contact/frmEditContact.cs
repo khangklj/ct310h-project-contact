@@ -161,9 +161,9 @@ namespace ct310h_project_contact
                 }
 
 
-                if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text) && !Regex.IsMatch(txtPhoneNumber.Text, @"^0\d{9}$"))
+                if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text) && !Regex.IsMatch(txtPhoneNumber.Text, @"^\d{10}$"))
                 {
-                    MessageBox.Show("Phone Number must be exactly 10 digits and start with 0!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Phone Number must be exactly 10 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

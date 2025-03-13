@@ -26,6 +26,9 @@ namespace ct310h_project_contact
 
         private void ucContactManagement_Load(object sender, EventArgs e)
         {
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
             LoadContacts(currentPage);
         }
 
@@ -41,7 +44,7 @@ namespace ct310h_project_contact
 
                 // SQL query for pagination using OFFSET and FETCH NEXT
                 string query = @"
-                    SELECT Contact_ID, Contact_Name, Contact_PhoneNumber, Contact_Favorite 
+                    SELECT Contact_ID, Contact_Name, Contact_PhoneNumber, Contact_Favorite, Contact_Email
                     FROM Contact 
                     WHERE Account_ID = @Account_ID
                     ORDER BY Contact_ID 
@@ -58,9 +61,6 @@ namespace ct310h_project_contact
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
-
-                dgvContacts.AutoGenerateColumns = false;
-                dgvContacts.DataSource = dt;
 
                 dgvContacts.AutoGenerateColumns = false;
                 dgvContacts.DataSource = dt;

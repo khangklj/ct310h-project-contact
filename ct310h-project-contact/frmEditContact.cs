@@ -153,18 +153,20 @@ namespace ct310h_project_contact
                     MessageBox.Show("Contact Name is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                if (string.IsNullOrEmpty(phoneNumber))
+                if (string.IsNullOrEmpty(email))
                 {
-                    MessageBox.Show("Phone Number is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Contact email is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtContactEmail.Focus();
                     return;
                 }
 
-                if (!Regex.IsMatch(phoneNumber, @"^\d{10}$"))
+
+                if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text) && !Regex.IsMatch(txtPhoneNumber.Text, @"^0\d{9}$"))
                 {
-                    MessageBox.Show("Phone Number must be 10 digits.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Phone Number must be exactly 10 digits and start with 0!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
 
                 if (!string.IsNullOrEmpty(email))
                 {

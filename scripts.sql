@@ -1,8 +1,6 @@
 Create Database CONTACT;
 Use CONTACT;
 
-Drop Table Contact;
-
 Create Login mylogin with password='mylogin', CHECK_POLICY = OFF;
 Execute sp_changedbowner mylogin;
 
@@ -32,14 +30,13 @@ Create Table Contact (
 	ContactGroup_ID int references ContactGroup(ContactGroup_ID),
 );
 
-
 Alter Table Contact
 Add Constraint chk_contact_email
 Check (Contact_Email Like '%_@_%._%');
 
 Alter Table Contact
 Add Constraint chk_contact_phonenumber
-Check (Contact_PhoneNumber Like '%[0-9]%');
+Check (Contact_PhoneNumber Is Null Or Contact_PhoneNumber = '' Or Contact_PhoneNumber Like '%[0-9]%');
 
 -- Insert Accounts
 INSERT INTO Account (Account_ID, Account_UserName, Account_Password, Account_Name) VALUES

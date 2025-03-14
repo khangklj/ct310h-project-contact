@@ -41,6 +41,9 @@
             txtContactDescription = new TextBox();
             txtContactGroup = new TextBox();
             btnClose = new Button();
+            btnMailTo = new Button();
+            txtEmail = new TextBox();
+            label7 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -65,7 +68,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(27, 131);
+            label3.Location = new Point(27, 133);
             label3.Name = "label3";
             label3.Size = new Size(59, 25);
             label3.TabIndex = 2;
@@ -74,7 +77,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(27, 180);
+            label4.Location = new Point(27, 184);
             label4.Name = "label4";
             label4.Size = new Size(132, 25);
             label4.TabIndex = 3;
@@ -83,7 +86,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(27, 229);
+            label5.Location = new Point(27, 286);
             label5.Name = "label5";
             label5.Size = new Size(102, 25);
             label5.TabIndex = 4;
@@ -92,7 +95,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(27, 298);
+            label6.Location = new Point(27, 376);
             label6.Name = "label6";
             label6.Size = new Size(62, 25);
             label6.TabIndex = 5;
@@ -119,7 +122,7 @@
             // 
             // txtContactName
             // 
-            txtContactName.Location = new Point(184, 128);
+            txtContactName.Location = new Point(184, 130);
             txtContactName.Name = "txtContactName";
             txtContactName.ReadOnly = true;
             txtContactName.Size = new Size(150, 31);
@@ -127,7 +130,7 @@
             // 
             // txtContactPhoneNumber
             // 
-            txtContactPhoneNumber.Location = new Point(184, 177);
+            txtContactPhoneNumber.Location = new Point(184, 181);
             txtContactPhoneNumber.Name = "txtContactPhoneNumber";
             txtContactPhoneNumber.ReadOnly = true;
             txtContactPhoneNumber.Size = new Size(150, 31);
@@ -135,36 +138,67 @@
             // 
             // txtContactDescription
             // 
-            txtContactDescription.Location = new Point(184, 226);
+            txtContactDescription.Location = new Point(184, 283);
             txtContactDescription.Multiline = true;
             txtContactDescription.Name = "txtContactDescription";
             txtContactDescription.ReadOnly = true;
-            txtContactDescription.Size = new Size(219, 46);
-            txtContactDescription.TabIndex = 10;
+            txtContactDescription.Size = new Size(219, 74);
+            txtContactDescription.TabIndex = 11;
             // 
             // txtContactGroup
             // 
-            txtContactGroup.Location = new Point(184, 295);
+            txtContactGroup.Location = new Point(184, 373);
             txtContactGroup.Name = "txtContactGroup";
             txtContactGroup.ReadOnly = true;
             txtContactGroup.Size = new Size(150, 31);
-            txtContactGroup.TabIndex = 11;
+            txtContactGroup.TabIndex = 12;
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(151, 348);
+            btnClose.Location = new Point(233, 426);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(112, 34);
-            btnClose.TabIndex = 12;
+            btnClose.TabIndex = 14;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
+            // 
+            // btnMailTo
+            // 
+            btnMailTo.Location = new Point(84, 426);
+            btnMailTo.Name = "btnMailTo";
+            btnMailTo.Size = new Size(112, 34);
+            btnMailTo.TabIndex = 13;
+            btnMailTo.Text = "Mail To";
+            btnMailTo.UseVisualStyleBackColor = true;
+            btnMailTo.Click += btnMailTo_Click;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(184, 232);
+            txtEmail.Name = "txtEmail";
+            txtEmail.ReadOnly = true;
+            txtEmail.Size = new Size(219, 31);
+            txtEmail.TabIndex = 10;
+            txtEmail.TextChanged += textBox1_TextChanged;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(27, 235);
+            label7.Name = "label7";
+            label7.Size = new Size(54, 25);
+            label7.TabIndex = 14;
+            label7.Text = "Email";
             // 
             // frmContactDetails
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(435, 403);
+            ClientSize = new Size(435, 494);
+            Controls.Add(txtEmail);
+            Controls.Add(label7);
+            Controls.Add(btnMailTo);
             Controls.Add(btnClose);
             Controls.Add(txtContactGroup);
             Controls.Add(txtContactDescription);
@@ -200,5 +234,8 @@
         private TextBox txtContactDescription;
         private TextBox txtContactGroup;
         private Button btnClose;
+        private Button btnMailTo;
+        private TextBox txtEmail;
+        private Label label7;
     }
 }

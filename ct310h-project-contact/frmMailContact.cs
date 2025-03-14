@@ -36,10 +36,8 @@ namespace ct310h_project_contact
                 string toEmail = txtMailTo.Text.Trim();
                 string subject = txtMailSubject.Text.Trim();
                 string body = txtMailBody.Text.Trim();
-                string cc = txtMailCc.Text.Trim();
-                string bcc = txtMailBcc.Text.Trim();
-
-                string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                string cc = GetEmailsFromListBox(lstCc);
+                string bcc = GetEmailsFromListBox(lstBcc);
 
                 if (string.IsNullOrWhiteSpace(toEmail))
                 {
@@ -62,23 +60,21 @@ namespace ct310h_project_contact
                     return;
                 }
 
-                if (!string.IsNullOrWhiteSpace(cc) && !Regex.IsMatch(cc, emailPattern))
+                List<string> attachments = new List<string>();
+                foreach (var item in lstFiles.Items)
                 {
-                    MessageBox.Show("Invalid CC email format!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMailCc.Focus();
-                    return;
-                }
-
-                if (!string.IsNullOrWhiteSpace(bcc) && !Regex.IsMatch(bcc, emailPattern))
-                {
-                    MessageBox.Show("Invalid BCC email format!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMailBcc.Focus();
-                    return;
+                    attachments.Add(item.ToString());
                 }
 
                 EmailService emailService = new EmailService(fromEmail, password);
 
                 emailService.ConstructEmail(toEmail, subject, body, cc, bcc);
+
+                if (attachments.Count > 0)
+                {
+                    emailService.AddAttachments(attachments);
+                }
+
                 emailService.SendEmail();
 
                 MessageBox.Show("Email sent successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -87,6 +83,121 @@ namespace ct310h_project_contact
             catch (Exception ex)
             {
                 MessageBox.Show("Error sending email: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string GetEmailsFromListBox(ListBox listBox)
+        {
+            List<string> emails = new List<string>();
+
+            foreach (var item in listBox.Items)
+            {
+                emails.Add(item.ToString());
+            }
+
+            return string.Join(",", emails); // Return emails as comma-separated string
+        }
+
+        private void btnInsertFile_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Multiselect = true;
+                openFileDialog.Filter = "All Files|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (string file in openFileDialog.FileNames)
+                    {
+                        if (!lstFiles.Items.Contains(file)) // Prevent duplicates
+                        {
+                            lstFiles.Items.Add(file);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnDeleteFiles_Click(object sender, EventArgs e)
+        {
+            List<object> selectedItems = new List<object>();
+
+            foreach (var item in lstFiles.SelectedItems)
+            {
+                selectedItems.Add(item);
+            }
+
+            foreach (var item in selectedItems)
+            {
+                lstFiles.Items.Remove(item);
+            }
+        }
+
+        private void btnInsertCc_Click(object sender, EventArgs e)
+        {
+            using (frmEmailInput inputForm = new frmEmailInput())
+            {
+                inputForm.Text = "Enter CC Email";
+
+                if (inputForm.ShowDialog() == DialogResult.OK)
+                {
+                    string ccEmail = inputForm.EnteredEmail.Trim();
+
+                    if (!lstCc.Items.Contains(ccEmail))
+                    {
+                        lstCc.Items.Add(ccEmail);
+                    }
+                    else
+                    {
+                        MessageBox.Show("This CC email is already added.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
+        private void btnDeleteCc_Click(object sender, EventArgs e)
+        {
+            if (lstCc.SelectedItem != null)
+            {
+                lstCc.Items.Remove(lstCc.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Please select a CC email to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnInsertBcc_Click(object sender, EventArgs e)
+        {
+            using (frmEmailInput inputForm = new frmEmailInput())
+            {
+                inputForm.Text = "Enter BCC Email";
+
+                if (inputForm.ShowDialog() == DialogResult.OK)
+                {
+                    string bccEmail = inputForm.EnteredEmail.Trim();
+
+                    if (!lstBcc.Items.Contains(bccEmail))
+                    {
+                        lstBcc.Items.Add(bccEmail);
+                    }
+                    else
+                    {
+                        MessageBox.Show("This BCC email is already added.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
+        private void btnDeleteBcc_Click(object sender, EventArgs e)
+        {
+            if (lstBcc.SelectedItem != null)
+            {
+                lstBcc.Items.Remove(lstBcc.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Please select a BCC email to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

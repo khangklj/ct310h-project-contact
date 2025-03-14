@@ -54,6 +54,12 @@ INSERT INTO ContactGroup (ContactGroup_ID, ContactGroup_Name, ContactGroup_Descr
 
 -- Insert Contacts
 -- Insert Contacts with Email
+
+ALTER TABLE Contact DROP CONSTRAINT chk_contact_phonenumber;
+
+ALTER TABLE Contact ADD CONSTRAINT chk_contact_phonenumber
+CHECK (Contact_PhoneNumber IS NULL OR Contact_PhoneNumber = '' OR Contact_PhoneNumber LIKE '%[0-9]%');
+
 INSERT INTO Contact (Contact_ID, Contact_Name, Contact_Email, Contact_PhoneNumber, Contact_Favorite, Contact_Description, Account_ID, ContactGroup_ID) VALUES
 (1, 'Mike Doe', 'mike.doe@example.com', '1234567890', 1, 'Brother', 1, 1),
 (2, 'Sara Doe', 'sara.doe@example.com', '1234567891', 0, 'Sister', 1, 1),
@@ -65,3 +71,5 @@ INSERT INTO Contact (Contact_ID, Contact_Name, Contact_Email, Contact_PhoneNumbe
 (8, 'Sophia Martinez', 'sophia.martinez@example.com', '1234567897', 0, 'Neighbor', 3, NULL),
 (9, 'Mia Garcia', 'mia.garcia@example.com', '1234567898', 1, 'Close friend', 1, 2),
 (10, 'James Taylor', 'james.taylor@example.com', '1234567899', 0, 'Family friend', 3, 1);
+
+

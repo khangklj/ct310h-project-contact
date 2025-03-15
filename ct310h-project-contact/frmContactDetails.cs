@@ -32,9 +32,9 @@ namespace ct310h_project_contact
             {
                 clsDatabase.OpenConnection();
 
-                string query = @"SELECT c.Contact_ID, c.Contact_Name, c.Contact_PhoneNumber, 
-                                c.Contact_Favorite, c.Contact_Description, 
-                                cg.ContactGroup_Name 
+                string query = @"SELECT c.Contact_ID, c.Contact_Name, c.Contact_Email,
+                                c.Contact_PhoneNumber, c.Contact_Favorite, 
+                                c.Contact_Description, cg.ContactGroup_Name 
                          FROM Contact c
                          LEFT JOIN ContactGroup cg ON c.ContactGroup_ID = cg.ContactGroup_ID
                          WHERE c.Contact_ID = @contactID";
@@ -48,6 +48,7 @@ namespace ct310h_project_contact
                 {
                     txtContactID.Text = reader["Contact_ID"].ToString();
                     txtContactName.Text = reader["Contact_Name"].ToString();
+                    txtEmail.Text = reader["Contact_Email"].ToString();
                     txtContactPhoneNumber.Text = reader["Contact_PhoneNumber"].ToString();
                     chkFavorite.Checked = Convert.ToBoolean(reader["Contact_Favorite"]);
                     txtContactDescription.Text = reader["Contact_Description"].ToString();
@@ -67,6 +68,15 @@ namespace ct310h_project_contact
             }
         }
 
+        private void btnMailTo_Click(object sender, EventArgs e)
+        {
+            frmMailContact frmMailContact = new frmMailContact(txtEmail.Text);
+            frmMailContact.ShowDialog();
+        }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

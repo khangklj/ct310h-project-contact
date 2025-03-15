@@ -63,7 +63,7 @@ namespace ct310h_project_contact
                 List<string> attachments = new List<string>();
                 foreach (var item in lstFiles.Items)
                 {
-                    attachments.Add(item.ToString());
+                    attachments.Add(item.ToString()!);
                 }
 
                 EmailService emailService = new EmailService(fromEmail, password);
@@ -92,7 +92,7 @@ namespace ct310h_project_contact
 
             foreach (var item in listBox.Items)
             {
-                emails.Add(item.ToString());
+                emails.Add(item.ToString()!);
             }
 
             return string.Join(",", emails); // Return emails as comma-separated string
@@ -120,16 +120,13 @@ namespace ct310h_project_contact
 
         private void btnDeleteFiles_Click(object sender, EventArgs e)
         {
-            List<object> selectedItems = new List<object>();
-
-            foreach (var item in lstFiles.SelectedItems)
+            if (lstFiles.SelectedItem != null)
             {
-                selectedItems.Add(item);
+                lstFiles.Items.Remove(lstFiles.SelectedItem);
             }
-
-            foreach (var item in selectedItems)
+            else
             {
-                lstFiles.Items.Remove(item);
+                MessageBox.Show("Please select a file to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -141,7 +138,7 @@ namespace ct310h_project_contact
 
                 if (inputForm.ShowDialog() == DialogResult.OK)
                 {
-                    string ccEmail = inputForm.EnteredEmail.Trim();
+                    string ccEmail = inputForm.EnteredEmail;
 
                     if (!lstCc.Items.Contains(ccEmail))
                     {
@@ -149,7 +146,7 @@ namespace ct310h_project_contact
                     }
                     else
                     {
-                        MessageBox.Show("This CC email is already added.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("This CC email is already added.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -163,7 +160,7 @@ namespace ct310h_project_contact
             }
             else
             {
-                MessageBox.Show("Please select a CC email to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select a CC email to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -175,7 +172,7 @@ namespace ct310h_project_contact
 
                 if (inputForm.ShowDialog() == DialogResult.OK)
                 {
-                    string bccEmail = inputForm.EnteredEmail.Trim();
+                    string bccEmail = inputForm.EnteredEmail;
 
                     if (!lstBcc.Items.Contains(bccEmail))
                     {
@@ -183,7 +180,7 @@ namespace ct310h_project_contact
                     }
                     else
                     {
-                        MessageBox.Show("This BCC email is already added.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("This BCC email is already added.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -197,7 +194,7 @@ namespace ct310h_project_contact
             }
             else
             {
-                MessageBox.Show("Please select a BCC email to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select a BCC email to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

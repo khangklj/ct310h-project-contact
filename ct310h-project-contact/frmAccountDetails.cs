@@ -108,7 +108,7 @@ namespace ct310h_project_contact
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text) )
+            if (string.IsNullOrWhiteSpace(txtName.Text))
             {
                 MessageBox.Show("Name can not empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtName.Focus();
@@ -125,7 +125,7 @@ namespace ct310h_project_contact
             {
                 clsDatabase.OpenConnection();
 
-                
+
                 bool updateAvatar = !string.IsNullOrEmpty(currentAvatarPath) && File.Exists(currentAvatarPath);
 
                 string query = updateAvatar

@@ -13,7 +13,7 @@ namespace ct310h_project_contact
 {
     public partial class frmEmailInput : Form
     {
-        public string EnteredEmail;
+        public string EnteredEmail = "";
 
         public frmEmailInput()
         {

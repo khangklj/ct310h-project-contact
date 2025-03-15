@@ -47,9 +47,9 @@
             label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(284, 20);
             label1.Name = "label1";
-            label1.Size = new Size(134, 25);
+            label1.Size = new Size(139, 25);
             label1.TabIndex = 0;
-            label1.Text = "AccountDetail";
+            label1.Text = "Account Detail";
             // 
             // picAvatar
             // 

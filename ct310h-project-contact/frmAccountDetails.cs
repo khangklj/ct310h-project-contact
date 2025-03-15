@@ -56,7 +56,7 @@ namespace ct310h_project_contact
                                 }
                                 catch
                                 {
-                                    MessageBox.Show("Ảnh đại diện bị lỗi, hiển thị ảnh mặc định.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("Avatar image is broken, showing default image.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     LoadDefaultAvatar();
                                 }
                             }
@@ -70,7 +70,7 @@ namespace ct310h_project_contact
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải tài khoản:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error load account:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -83,7 +83,7 @@ namespace ct310h_project_contact
             }
             else
             {
-                MessageBox.Show("Không tìm thấy ảnh mặc định!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't find Default avatar!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -97,7 +97,7 @@ namespace ct310h_project_contact
                     FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
                     if (fileInfo.Length > maxFileSize)
                     {
-                        MessageBox.Show("Kích thước ảnh không được vượt quá 1MB.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Size not exceeding 1MB.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     currentAvatarPath = openFileDialog.FileName;
@@ -108,9 +108,16 @@ namespace ct310h_project_contact
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
+            if (string.IsNullOrWhiteSpace(txtName.Text) )
             {
-                MessageBox.Show("Tên và Mật khẩu không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Name can not empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Password can not empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassword.Focus();
                 return;
             }
 
@@ -118,7 +125,7 @@ namespace ct310h_project_contact
             {
                 clsDatabase.OpenConnection();
 
-                // Kiểm tra xem có cập nhật ảnh hay không
+                
                 bool updateAvatar = !string.IsNullOrEmpty(currentAvatarPath) && File.Exists(currentAvatarPath);
 
                 string query = updateAvatar
@@ -146,12 +153,12 @@ namespace ct310h_project_contact
                     }
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Update sucessfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi cập nhật tài khoản:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error update Account:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

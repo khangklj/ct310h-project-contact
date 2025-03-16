@@ -54,7 +54,7 @@
             dgvContacts.BackgroundColor = Color.White;
             dgvContacts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle2.BackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.Font = new Font("Arial", 10F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
@@ -179,12 +179,12 @@
             // lblPageNumber
             // 
             lblPageNumber.AutoSize = true;
-            lblPageNumber.Location = new Point(282, 229);
+            lblPageNumber.Location = new Point(296, 229);
             lblPageNumber.Margin = new Padding(2, 0, 2, 0);
             lblPageNumber.Name = "lblPageNumber";
-            lblPageNumber.Size = new Size(33, 15);
+            lblPageNumber.Size = new Size(53, 15);
             lblPageNumber.TabIndex = 5;
-            lblPageNumber.Text = "page";
+            lblPageNumber.Text = "page 1/1";
             lblPageNumber.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnPrevious
@@ -200,7 +200,7 @@
             // 
             // btnNext
             // 
-            btnNext.Location = new Point(346, 226);
+            btnNext.Location = new Point(363, 226);
             btnNext.Margin = new Padding(2);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(70, 20);
@@ -223,7 +223,7 @@
             Controls.Add(dgvContacts);
             Margin = new Padding(2);
             Name = "ucContactManagement";
-            Size = new Size(706, 294);
+            Size = new Size(706, 295);
             Load += ucContactManagement_Load;
             ((System.ComponentModel.ISupportInitialize)dgvContacts).EndInit();
             ResumeLayout(false);

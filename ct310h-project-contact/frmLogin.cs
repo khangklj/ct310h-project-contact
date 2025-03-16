@@ -44,7 +44,7 @@ namespace ct310h_project_contact
                 MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                frmTestDatabase frm = new frmTestDatabase();
+                frmHomePage frm = new frmHomePage();
                 this.Hide();
                 frm.ShowDialog();
             }

@@ -35,21 +35,22 @@ namespace ct310h_project_contact
             btnManageGroup = new Button();
             lblHomePage = new Label();
             cmsAccount = new ContextMenuStrip(components);
-            accountDetailsToolStripMenuItem = new ToolStripMenuItem();
-            settingsToolStripMenuItem = new ToolStripMenuItem();
+            tsmiAccountDetails = new ToolStripMenuItem();
             signOutToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             rbtnAccount = new RoundButton();
             lblAccountName = new Label();
+            pnlMain = new Panel();
             cmsAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)rbtnAccount).BeginInit();
             SuspendLayout();
             // 
             // btnManageContact
             // 
-            btnManageContact.Location = new Point(22, 54);
+            btnManageContact.Location = new Point(15, 32);
+            btnManageContact.Margin = new Padding(2);
             btnManageContact.Name = "btnManageContact";
-            btnManageContact.Size = new Size(150, 34);
+            btnManageContact.Size = new Size(105, 29);
             btnManageContact.TabIndex = 0;
             btnManageContact.Text = "Manage Contact";
             btnManageContact.UseVisualStyleBackColor = true;
@@ -57,9 +58,10 @@ namespace ct310h_project_contact
             // 
             // btnManageGroup
             // 
-            btnManageGroup.Location = new Point(22, 97);
+            btnManageGroup.Location = new Point(126, 32);
+            btnManageGroup.Margin = new Padding(2);
             btnManageGroup.Name = "btnManageGroup";
-            btnManageGroup.Size = new Size(150, 34);
+            btnManageGroup.Size = new Size(105, 29);
             btnManageGroup.TabIndex = 1;
             btnManageGroup.Text = "Manage Group";
             btnManageGroup.UseVisualStyleBackColor = true;
@@ -69,42 +71,38 @@ namespace ct310h_project_contact
             // 
             lblHomePage.AutoSize = true;
             lblHomePage.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHomePage.Location = new Point(336, 9);
+            lblHomePage.Location = new Point(444, 9);
+            lblHomePage.Margin = new Padding(2, 0, 2, 0);
             lblHomePage.Name = "lblHomePage";
-            lblHomePage.Size = new Size(171, 38);
+            lblHomePage.Size = new Size(117, 25);
             lblHomePage.TabIndex = 2;
             lblHomePage.Text = "HOMEPAGE";
             // 
             // cmsAccount
             // 
             cmsAccount.ImageScalingSize = new Size(24, 24);
-            cmsAccount.Items.AddRange(new ToolStripItem[] { accountDetailsToolStripMenuItem, settingsToolStripMenuItem, signOutToolStripMenuItem, exitToolStripMenuItem });
+            cmsAccount.Items.AddRange(new ToolStripItem[] { tsmiAccountDetails, signOutToolStripMenuItem, exitToolStripMenuItem });
             cmsAccount.Name = "contextMenuStrip1";
-            cmsAccount.Size = new Size(206, 132);
+            cmsAccount.Size = new Size(157, 70);
             // 
-            // accountDetailsToolStripMenuItem
+            // tsmiAccountDetails
             // 
-            accountDetailsToolStripMenuItem.Name = "accountDetailsToolStripMenuItem";
-            accountDetailsToolStripMenuItem.Size = new Size(205, 32);
-            accountDetailsToolStripMenuItem.Text = "Account details";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(205, 32);
-            settingsToolStripMenuItem.Text = "Settings";
+            tsmiAccountDetails.Name = "tsmiAccountDetails";
+            tsmiAccountDetails.Size = new Size(156, 22);
+            tsmiAccountDetails.Text = "Account details";
+            tsmiAccountDetails.Click += tsmiAccountDetails_Click;
             // 
             // signOutToolStripMenuItem
             // 
             signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
-            signOutToolStripMenuItem.Size = new Size(205, 32);
+            signOutToolStripMenuItem.Size = new Size(156, 22);
             signOutToolStripMenuItem.Text = "Sign out";
             signOutToolStripMenuItem.Click += signOutToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(205, 32);
+            exitToolStripMenuItem.Size = new Size(156, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -114,9 +112,10 @@ namespace ct310h_project_contact
             rbtnAccount.BorderSize = 2;
             rbtnAccount.CornerRadius = 32;
             rbtnAccount.Image = Properties.Resources._420578901_7242486e_31f0_445b_8413_adec87813679;
-            rbtnAccount.Location = new Point(846, 54);
+            rbtnAccount.Location = new Point(970, 32);
+            rbtnAccount.Margin = new Padding(2);
             rbtnAccount.Name = "rbtnAccount";
-            rbtnAccount.Size = new Size(64, 64);
+            rbtnAccount.Size = new Size(45, 38);
             rbtnAccount.SizeMode = PictureBoxSizeMode.Zoom;
             rbtnAccount.TabIndex = 3;
             rbtnAccount.TabStop = false;
@@ -124,26 +123,36 @@ namespace ct310h_project_contact
             // 
             // lblAccountName
             // 
-            lblAccountName.AutoSize = true;
-            lblAccountName.Location = new Point(784, 121);
+            lblAccountName.Location = new Point(821, 55);
+            lblAccountName.Margin = new Padding(2, 0, 2, 0);
             lblAccountName.Name = "lblAccountName";
-            lblAccountName.Size = new Size(126, 25);
+            lblAccountName.Size = new Size(145, 15);
             lblAccountName.TabIndex = 4;
-            lblAccountName.Text = "Account name";
-            lblAccountName.TextAlign = ContentAlignment.MiddleCenter;
+            lblAccountName.Text = "[Account Name]";
+            lblAccountName.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // pnlMain
+            // 
+            pnlMain.Location = new Point(15, 104);
+            pnlMain.Name = "pnlMain";
+            pnlMain.Size = new Size(1000, 386);
+            pnlMain.TabIndex = 5;
             // 
             // frmHomePage
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(922, 526);
+            ClientSize = new Size(1031, 510);
+            Controls.Add(pnlMain);
             Controls.Add(lblAccountName);
             Controls.Add(rbtnAccount);
             Controls.Add(lblHomePage);
             Controls.Add(btnManageGroup);
             Controls.Add(btnManageContact);
+            Margin = new Padding(2);
             Name = "frmHomePage";
             Text = "Homepage";
+            FormClosed += frmHomePage_FormClosed;
             cmsAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)rbtnAccount).EndInit();
             ResumeLayout(false);
@@ -156,11 +165,11 @@ namespace ct310h_project_contact
         private Button btnManageGroup;
         private Label lblHomePage;
         private ContextMenuStrip cmsAccount;
-        private ToolStripMenuItem accountDetailsToolStripMenuItem;
-        private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem tsmiAccountDetails;
         private ToolStripMenuItem signOutToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private RoundButton rbtnAccount;
         private Label lblAccountName;
+        private Panel pnlMain;
     }
 }

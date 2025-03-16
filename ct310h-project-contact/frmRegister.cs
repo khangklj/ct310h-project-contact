@@ -18,11 +18,6 @@ namespace ct310h_project_contact
             InitializeComponent();
         }
 
-
-        private void frmRegister_Load(object sender, EventArgs e)
-        {
-
-        }
         private bool IsUsernameExists(string username)
         {
             try
@@ -182,6 +177,13 @@ namespace ct310h_project_contact
         }
 
         private void lblBackToLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin loginform = new frmLogin();
+            loginform.Show();
+            this.Hide();
+        }
+
+        private void frmRegister_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmLogin loginform = new frmLogin();
             loginform.Show();

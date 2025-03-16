@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 
-namespace ct310h_project_contact
-{
+namespace ct310h_project_contact{
+
+
     public partial class ucContactGroupManagement : UserControl
     {
-
         private readonly int? account_ID = 2;
         private int selectedGroupID;
         public ucContactGroupManagement()
@@ -49,6 +49,9 @@ namespace ct310h_project_contact
                     ListViewItem item = new ListViewItem(row["ContactGroup_ID"].ToString());
                     item.SubItems.Add(row["ContactGroup_Name"].ToString());
                     item.SubItems.Add(row["ContactGroup_Description"].ToString());
+                    // Style font
+                    item.Font = new Font(item.Font, FontStyle.Regular);
+
                     lvwContactGroupManagement.Items.Add(item);
                 }
 
@@ -93,6 +96,9 @@ namespace ct310h_project_contact
                     String check = isFavorite ? "✔️" : "";
                     item.SubItems.Add(check);
                     item.SubItems.Add(row["Contact_Description"].ToString());
+
+                    // Style font
+                    item.Font = new Font(item.Font, FontStyle.Regular);
 
                     lvwContactFollowingGroup.Items.Add(item);
 

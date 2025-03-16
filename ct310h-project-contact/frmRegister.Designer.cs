@@ -46,7 +46,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(319, 49);
+            label1.Location = new Point(157, 29);
             label1.Name = "label1";
             label1.Size = new Size(124, 32);
             label1.TabIndex = 0;
@@ -55,7 +55,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(249, 121);
+            label2.Location = new Point(108, 98);
             label2.Name = "label2";
             label2.Size = new Size(60, 15);
             label2.TabIndex = 1;
@@ -64,7 +64,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(249, 166);
+            label3.Location = new Point(108, 143);
             label3.Name = "label3";
             label3.Size = new Size(57, 15);
             label3.TabIndex = 2;
@@ -73,7 +73,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(205, 210);
+            label4.Location = new Point(64, 187);
             label4.Name = "label4";
             label4.Size = new Size(104, 15);
             label4.TabIndex = 3;
@@ -81,14 +81,14 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(363, 118);
+            txtUsername.Location = new Point(201, 98);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(163, 23);
             txtUsername.TabIndex = 4;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(363, 163);
+            txtPassword.Location = new Point(200, 143);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(164, 23);
             txtPassword.TabIndex = 5;
@@ -96,7 +96,7 @@
             // 
             // txtComfirm
             // 
-            txtComfirm.Location = new Point(363, 207);
+            txtComfirm.Location = new Point(200, 187);
             txtComfirm.Name = "txtComfirm";
             txtComfirm.Size = new Size(164, 23);
             txtComfirm.TabIndex = 6;
@@ -104,7 +104,7 @@
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(294, 327);
+            btnExit.Location = new Point(108, 290);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(75, 23);
             btnExit.TabIndex = 7;
@@ -114,7 +114,7 @@
             // 
             // btnRegister
             // 
-            btnRegister.Location = new Point(469, 327);
+            btnRegister.Location = new Point(224, 290);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(75, 23);
             btnRegister.TabIndex = 8;
@@ -125,7 +125,7 @@
             // lblBackToLogin
             // 
             lblBackToLogin.AutoSize = true;
-            lblBackToLogin.Location = new Point(381, 366);
+            lblBackToLogin.Location = new Point(167, 334);
             lblBackToLogin.Name = "lblBackToLogin";
             lblBackToLogin.Size = new Size(76, 15);
             lblBackToLogin.TabIndex = 9;
@@ -136,7 +136,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(267, 255);
+            label5.Location = new Point(126, 232);
             label5.Name = "label5";
             label5.Size = new Size(39, 15);
             label5.TabIndex = 10;
@@ -144,7 +144,7 @@
             // 
             // txtName
             // 
-            txtName.Location = new Point(363, 252);
+            txtName.Location = new Point(200, 232);
             txtName.Name = "txtName";
             txtName.Size = new Size(164, 23);
             txtName.TabIndex = 11;
@@ -153,7 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(437, 386);
             Controls.Add(txtName);
             Controls.Add(label5);
             Controls.Add(lblBackToLogin);
@@ -167,8 +167,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "frmRegister";
-            Text = "'";
-            Load += frmRegister_Load;
+            Text = "Register";
+            FormClosed += frmRegister_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

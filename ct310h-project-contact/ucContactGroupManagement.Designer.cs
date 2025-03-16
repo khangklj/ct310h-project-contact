@@ -45,6 +45,8 @@
             colContact_Description = new ColumnHeader();
             lblGroup = new Label();
             lblContact = new Label();
+            btnAddContact = new Button();
+            btnDeleteContact = new Button();
             colContactGroup_ID = new ColumnHeader();
             SuspendLayout();
             // 
@@ -82,7 +84,7 @@
             // btnAdd
             // 
             btnAdd.AutoSize = true;
-            btnAdd.Location = new Point(125, 314);
+            btnAdd.Location = new Point(49, 317);
             btnAdd.Margin = new Padding(3, 2, 3, 2);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(82, 25);
@@ -93,7 +95,7 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(228, 315);
+            btnEdit.Location = new Point(157, 318);
             btnEdit.Margin = new Padding(3, 2, 3, 2);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(82, 22);
@@ -104,7 +106,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(337, 315);
+            btnDelete.Location = new Point(261, 318);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(82, 22);
@@ -115,7 +117,7 @@
             // 
             // btnOpen
             // 
-            btnOpen.Location = new Point(832, 315);
+            btnOpen.Location = new Point(744, 318);
             btnOpen.Margin = new Padding(3, 2, 3, 2);
             btnOpen.Name = "btnOpen";
             btnOpen.Size = new Size(82, 22);
@@ -191,10 +193,32 @@
             lblContact.TabIndex = 7;
             lblContact.Text = "Contact";
             // 
+            // btnAddContact
+            // 
+            btnAddContact.Location = new Point(369, 317);
+            btnAddContact.Name = "btnAddContact";
+            btnAddContact.Size = new Size(135, 23);
+            btnAddContact.TabIndex = 8;
+            btnAddContact.Text = "Add Contact";
+            btnAddContact.UseVisualStyleBackColor = true;
+            btnAddContact.Click += btnAddContact_Click;
+            // 
+            // btnDeleteContact
+            // 
+            btnDeleteContact.Location = new Point(846, 317);
+            btnDeleteContact.Name = "btnDeleteContact";
+            btnDeleteContact.Size = new Size(140, 23);
+            btnDeleteContact.TabIndex = 9;
+            btnDeleteContact.Text = "Delete Contact";
+            btnDeleteContact.UseVisualStyleBackColor = true;
+            btnDeleteContact.Click += btnDeleteContact_Click;
+            // 
             // ucContactGroupManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnDeleteContact);
+            Controls.Add(btnAddContact);
             Controls.Add(lblContact);
             Controls.Add(lblGroup);
             Controls.Add(lvwContactFollowingGroup);
@@ -205,7 +229,7 @@
             Controls.Add(lvwContactGroupManagement);
             Margin = new Padding(3, 2, 3, 2);
             Name = "ucContactGroupManagement";
-            Size = new Size(1192, 352);
+            Size = new Size(1192, 424);
             Load += ucContactGroupManagement_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -229,5 +253,7 @@
         private ColumnHeader colContact_Description;
         private Label lblGroup;
         private Label lblContact;
+        private Button btnAddContact;
+        private Button btnDeleteContact;
     }
 }

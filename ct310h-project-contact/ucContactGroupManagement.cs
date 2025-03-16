@@ -14,8 +14,8 @@ namespace ct310h_project_contact
     public partial class ucContactGroupManagement : UserControl
     {
 
-        private readonly int? account_ID = AuthInfo.AccountID;
-
+        private readonly int? account_ID = 2;
+        private int selectedGroupID;
         public ucContactGroupManagement()
         {
             InitializeComponent();
@@ -72,9 +72,12 @@ namespace ct310h_project_contact
                 String query = @"
                             SELECT Contact_ID, Contact_Name, Contact_Email, Contact_PhoneNumber, Contact_Favorite, Contact_Description
                             FROM Contact
-                            WHERE ContactGroup_ID = @ContactGroup_ID";
+                            WHERE ContactGroup_ID = @ContactGroup_ID
+                            AND Account_ID = @Account_ID";
                 SqlCommand comm = new SqlCommand(query, clsDatabase.conn);
                 comm.Parameters.AddWithValue("@ContactGroup_ID", contactGroupID);
+                comm.Parameters.AddWithValue("@Account_ID", account_ID);
+
                 SqlDataAdapter da = new SqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -124,16 +127,18 @@ namespace ct310h_project_contact
             {
                 if (lvwContactGroupManagement.SelectedItems.Count > 0)
                 {
+                    selectedGroupID = Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text);
                     btnEdit.Enabled = true;
                     btnDelete.Enabled = true;
-                    LoadContactFollowingGroup(Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text));
+                    LoadContactFollowingGroup(selectedGroupID);
                 }
                 else
                 {
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
                 }
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Error when loading contacts", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -202,10 +207,12 @@ namespace ct310h_project_contact
             if (lvwContactFollowingGroup.SelectedIndices.Count > 0)
             {
                 btnOpen.Enabled = true;
+                btnDeleteContact.Enabled = true;
             }
             else
             {
                 btnOpen.Enabled = false;
+                btnDeleteContact.Enabled = false;
             }
         }
 
@@ -229,6 +236,7 @@ namespace ct310h_project_contact
         {
             lvwContactFollowingGroup.SelectedIndices.Clear();
             btnOpen.Enabled = false;
+            btnDeleteContact.Enabled = false;
         }
 
         private void lvwContactFollowingGroup_Enter(object sender, EventArgs e)
@@ -243,8 +251,64 @@ namespace ct310h_project_contact
             lvwContactFollowingGroup.SelectedIndices.Clear();
             lvwContactGroupManagement.SelectedIndices.Clear();
             btnOpen.Enabled = false;
+            btnDeleteContact.Enabled = false;
             btnDelete.Enabled = false;
-            btnEdit.Enabled=false;
+            btnEdit.Enabled = false;
+        }
+
+        private void btnAddContact_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lvwContactGroupManagement.SelectedItems.Count < 1)
+                {
+                    MessageBox.Show("Please select any group to add contact", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else
+                {
+                    int groupid = Convert.ToInt32(lvwContactGroupManagement.SelectedItems[0].SubItems[0].Text);
+                    string groupName = lvwContactGroupManagement.SelectedItems[0].SubItems[1].Text;
+                    frmAddContactFromGroupContactManagement frm = new frmAddContactFromGroupContactManagement(groupid, groupName);
+                    frm.ShowDialog();
+                    ResetIndices();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while adding contact: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnDeleteContact_Click(object sender, EventArgs e)
+        {
+            if (lvwContactFollowingGroup.SelectedItems.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("Do you want to DELETE the selected contact from Group?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    clsDatabase.OpenConnection();
+                    string query = @"
+                                UPDATE Contact
+                                SET ContactGroup_ID = NULL
+                                WHERE Account_ID = @Account_ID 
+                                AND Contact_ID = @Contact_ID";
+                    SqlCommand comm = new SqlCommand(query, clsDatabase.conn);
+                    int contact_ID = Convert.ToInt32(lvwContactFollowingGroup.SelectedItems[0].SubItems[0].Text);
+                    comm.Parameters.AddWithValue("@Account_ID", account_ID);
+                    comm.Parameters.AddWithValue("@Contact_ID", contact_ID);
+                    comm.ExecuteNonQuery();
+                    clsDatabase.CloseConnection();
+                    
+                    MessageBox.Show("Contact is deleted the group successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadContactFollowingGroup(selectedGroupID);
+                    //selectedGroupID = -1;
+                }
+            } else
+            {
+                MessageBox.Show("Please select any contact to DELETE from group.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

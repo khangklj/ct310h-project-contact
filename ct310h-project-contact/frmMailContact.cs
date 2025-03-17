@@ -27,10 +27,11 @@ namespace ct310h_project_contact
             this.Close();
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
+        private async void btnSend_Click(object sender, EventArgs e)
         {
+            frmLoadingScreen frmLoading = new frmLoadingScreen();            
             try
-            {
+            {         
                 string fromEmail = "rosalind66@ethereal.email";
                 string password = "Cubfdp3ftgVx3EeHPj";
                 string toEmail = txtMailTo.Text.Trim();
@@ -74,8 +75,10 @@ namespace ct310h_project_contact
                 {
                     emailService.AddAttachments(attachments);
                 }
-
-                emailService.SendEmail();
+                this.Enabled = false;
+                frmLoading.StartPosition = FormStartPosition.CenterScreen;
+                frmLoading.Show();
+                await emailService.SendEmail();
 
                 MessageBox.Show("Email sent successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
@@ -83,6 +86,15 @@ namespace ct310h_project_contact
             catch (Exception ex)
             {
                 MessageBox.Show("Error sending email: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Close the loading form
+                if (frmLoading.IsHandleCreated)
+                {
+                    frmLoading.Invoke((MethodInvoker)(() => frmLoading.Close()));
+                }
+                this.Enabled = true;
             }
         }
 

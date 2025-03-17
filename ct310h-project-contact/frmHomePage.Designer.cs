@@ -133,7 +133,7 @@ namespace ct310h_project_contact
             // 
             // pnlMain
             // 
-            pnlMain.Location = new Point(15, 104);
+            pnlMain.Location = new Point(15, 87);
             pnlMain.Name = "pnlMain";
             pnlMain.Size = new Size(1000, 386);
             pnlMain.TabIndex = 5;
@@ -142,7 +142,7 @@ namespace ct310h_project_contact
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1031, 510);
+            ClientSize = new Size(1031, 491);
             Controls.Add(pnlMain);
             Controls.Add(lblAccountName);
             Controls.Add(rbtnAccount);

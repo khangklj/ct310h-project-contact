@@ -121,4 +121,7 @@
   <data name="420578901-7242486e-31f0-445b-8413-adec87813679" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\420578901-7242486e-31f0-445b-8413-adec87813679.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Loading_Animation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Loading_Animation.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

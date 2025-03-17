@@ -33,7 +33,7 @@ namespace ct310h_project_contact
 
         private void btnTestAuth_Click(object sender, EventArgs e)
         {
-            int? accountID = AuthInfo.AccountID;
+            int? accountID = AuthService.AccountID;
             if (accountID == null)
             {
                 MessageBox.Show("Can't retrieve auth info");

@@ -14,7 +14,7 @@ namespace ct310h_project_contact
     public partial class frmEditGroupContact : Form
     {
 
-        private readonly int? account_ID = AuthInfo.AccountID; //why readonly ?
+        private readonly int? account_ID = AuthService.AccountID; //why readonly ?
         private readonly bool isEditing;
         private readonly int contactGroupID;
 
@@ -164,6 +164,14 @@ namespace ct310h_project_contact
         {
             txtContactGroup_ID.Clear();
             this.Hide();
+        }
+
+        private void txtContactGroup_Name_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                rtxContactGroup_Description.Focus();
+            }
         }
     }
 }

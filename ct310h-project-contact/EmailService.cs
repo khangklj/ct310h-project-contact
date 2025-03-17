@@ -61,7 +61,7 @@ namespace ct310h_project_contact
             }
         }
 
-        public void SendEmail()
+        public async Task SendEmail()
         {
             try
             {
@@ -71,7 +71,7 @@ namespace ct310h_project_contact
                     client.Credentials = cred;
                     client.EnableSsl = true;
 
-                    client.Send(msg);
+                    await client.SendMailAsync(msg);
                 }
             }
             catch (Exception ex)

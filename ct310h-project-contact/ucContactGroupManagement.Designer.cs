@@ -47,6 +47,7 @@
             lblContact = new Label();
             btnAddContact = new Button();
             btnDeleteContact = new Button();
+            label1 = new Label();
             colContactGroup_ID = new ColumnHeader();
             SuspendLayout();
             // 
@@ -58,13 +59,14 @@
             // lvwContactGroupManagement
             // 
             lvwContactGroupManagement.Columns.AddRange(new ColumnHeader[] { colContactGroup_ID, colContactGroup_Name, colContactGroup_Description });
+            lvwContactGroupManagement.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             lvwContactGroupManagement.FullRowSelect = true;
             lvwContactGroupManagement.GridLines = true;
-            lvwContactGroupManagement.Location = new Point(34, 77);
+            lvwContactGroupManagement.Location = new Point(32, 108);
             lvwContactGroupManagement.Margin = new Padding(3, 2, 3, 2);
             lvwContactGroupManagement.MultiSelect = false;
             lvwContactGroupManagement.Name = "lvwContactGroupManagement";
-            lvwContactGroupManagement.Size = new Size(480, 227);
+            lvwContactGroupManagement.Size = new Size(382, 227);
             lvwContactGroupManagement.TabIndex = 0;
             lvwContactGroupManagement.UseCompatibleStateImageBehavior = false;
             lvwContactGroupManagement.View = View.Details;
@@ -79,12 +81,12 @@
             // colContactGroup_Description
             // 
             colContactGroup_Description.Text = "Description";
-            colContactGroup_Description.Width = 400;
+            colContactGroup_Description.Width = 250;
             // 
             // btnAdd
             // 
             btnAdd.AutoSize = true;
-            btnAdd.Location = new Point(49, 317);
+            btnAdd.Location = new Point(32, 349);
             btnAdd.Margin = new Padding(3, 2, 3, 2);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(82, 25);
@@ -95,10 +97,10 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(157, 318);
+            btnEdit.Location = new Point(120, 349);
             btnEdit.Margin = new Padding(3, 2, 3, 2);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(82, 22);
+            btnEdit.Size = new Size(82, 25);
             btnEdit.TabIndex = 2;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
@@ -106,10 +108,10 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(261, 318);
+            btnDelete.Location = new Point(208, 349);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(82, 22);
+            btnDelete.Size = new Size(82, 25);
             btnDelete.TabIndex = 3;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -117,11 +119,11 @@
             // 
             // btnOpen
             // 
-            btnOpen.Location = new Point(744, 318);
+            btnOpen.Location = new Point(592, 349);
             btnOpen.Margin = new Padding(3, 2, 3, 2);
             btnOpen.Name = "btnOpen";
-            btnOpen.Size = new Size(82, 22);
-            btnOpen.TabIndex = 4;
+            btnOpen.Size = new Size(82, 25);
+            btnOpen.TabIndex = 6;
             btnOpen.Text = "Open";
             btnOpen.UseVisualStyleBackColor = true;
             btnOpen.Click += btnOpen_Click;
@@ -130,13 +132,14 @@
             // 
             lvwContactFollowingGroup.CheckBoxes = true;
             lvwContactFollowingGroup.Columns.AddRange(new ColumnHeader[] { colContact_ID, colContact_Name, colContact_Email, colContact_PhoneNumber, colContact_Favorite, colContact_Description });
+            lvwContactFollowingGroup.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             lvwContactFollowingGroup.FullRowSelect = true;
             lvwContactFollowingGroup.GridLines = true;
-            lvwContactFollowingGroup.Location = new Point(534, 77);
+            lvwContactFollowingGroup.Location = new Point(442, 108);
             lvwContactFollowingGroup.Margin = new Padding(3, 2, 3, 2);
             lvwContactFollowingGroup.MultiSelect = false;
             lvwContactFollowingGroup.Name = "lvwContactFollowingGroup";
-            lvwContactFollowingGroup.Size = new Size(640, 227);
+            lvwContactFollowingGroup.Size = new Size(508, 227);
             lvwContactFollowingGroup.TabIndex = 5;
             lvwContactFollowingGroup.UseCompatibleStateImageBehavior = false;
             lvwContactFollowingGroup.View = View.Details;
@@ -156,12 +159,12 @@
             // colContact_Email
             // 
             colContact_Email.Text = "Email";
-            colContact_Email.Width = 250;
+            colContact_Email.Width = 150;
             // 
             // colContact_PhoneNumber
             // 
             colContact_PhoneNumber.Text = "Phone Number";
-            colContact_PhoneNumber.Width = 150;
+            colContact_PhoneNumber.Width = 120;
             // 
             // colContact_Favorite
             // 
@@ -176,47 +179,58 @@
             // lblGroup
             // 
             lblGroup.AutoSize = true;
-            lblGroup.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblGroup.Location = new Point(34, 18);
+            lblGroup.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblGroup.Location = new Point(32, 62);
             lblGroup.Name = "lblGroup";
-            lblGroup.Size = new Size(115, 45);
+            lblGroup.Size = new Size(78, 30);
             lblGroup.TabIndex = 6;
             lblGroup.Text = "Group";
             // 
             // lblContact
             // 
             lblContact.AutoSize = true;
-            lblContact.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblContact.Location = new Point(534, 18);
+            lblContact.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblContact.Location = new Point(442, 62);
             lblContact.Name = "lblContact";
-            lblContact.Size = new Size(135, 45);
+            lblContact.Size = new Size(94, 30);
             lblContact.TabIndex = 7;
             lblContact.Text = "Contact";
             // 
             // btnAddContact
             // 
-            btnAddContact.Location = new Point(369, 317);
+            btnAddContact.Location = new Point(296, 349);
             btnAddContact.Name = "btnAddContact";
-            btnAddContact.Size = new Size(135, 23);
-            btnAddContact.TabIndex = 8;
+            btnAddContact.Size = new Size(118, 25);
+            btnAddContact.TabIndex = 4;
             btnAddContact.Text = "Add Contact";
             btnAddContact.UseVisualStyleBackColor = true;
             btnAddContact.Click += btnAddContact_Click;
             // 
             // btnDeleteContact
             // 
-            btnDeleteContact.Location = new Point(846, 317);
+            btnDeleteContact.Location = new Point(680, 349);
             btnDeleteContact.Name = "btnDeleteContact";
-            btnDeleteContact.Size = new Size(140, 23);
-            btnDeleteContact.TabIndex = 9;
+            btnDeleteContact.Size = new Size(118, 25);
+            btnDeleteContact.TabIndex = 7;
             btnDeleteContact.Text = "Delete Contact";
             btnDeleteContact.UseVisualStyleBackColor = true;
             btnDeleteContact.Click += btnDeleteContact_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(316, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(339, 32);
+            label1.TabIndex = 8;
+            label1.Text = "Contact Group Management";
             // 
             // ucContactGroupManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(btnDeleteContact);
             Controls.Add(btnAddContact);
             Controls.Add(lblContact);
@@ -229,7 +243,7 @@
             Controls.Add(lvwContactGroupManagement);
             Margin = new Padding(3, 2, 3, 2);
             Name = "ucContactGroupManagement";
-            Size = new Size(1192, 424);
+            Size = new Size(1000, 403);
             Load += ucContactGroupManagement_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -255,5 +269,6 @@
         private Label lblContact;
         private Button btnAddContact;
         private Button btnDeleteContact;
+        private Label label1;
     }
 }

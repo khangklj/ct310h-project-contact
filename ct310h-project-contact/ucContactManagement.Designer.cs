@@ -44,17 +44,20 @@
             lblPageNumber = new Label();
             btnPrevious = new Button();
             btnNext = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvContacts).BeginInit();
             SuspendLayout();
             // 
             // dgvContacts
             // 
+            dgvContacts.AllowUserToAddRows = false;
+            dgvContacts.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.LightGray;
             dgvContacts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvContacts.BackgroundColor = Color.White;
             dgvContacts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle2.BackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.Font = new Font("Arial", 10F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
@@ -73,7 +76,7 @@
             dgvContacts.DefaultCellStyle = dataGridViewCellStyle3;
             dgvContacts.EnableHeadersVisualStyles = false;
             dgvContacts.GridColor = Color.LightGray;
-            dgvContacts.Location = new Point(35, 2);
+            dgvContacts.Location = new Point(12, 69);
             dgvContacts.Margin = new Padding(2);
             dgvContacts.Name = "dgvContacts";
             dgvContacts.ReadOnly = true;
@@ -82,6 +85,7 @@
             dgvContacts.Size = new Size(640, 208);
             dgvContacts.TabIndex = 0;
             dgvContacts.SelectionChanged += dgvContacts_SelectionChanged;
+            dgvContacts.KeyDown += dgvContacts_KeyDown;
             // 
             // colName
             // 
@@ -131,11 +135,11 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(153, 250);
+            btnAdd.Location = new Point(154, 311);
             btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(78, 20);
-            btnAdd.TabIndex = 1;
+            btnAdd.TabIndex = 3;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
@@ -143,11 +147,11 @@
             // btnEdit
             // 
             btnEdit.Enabled = false;
-            btnEdit.Location = new Point(235, 250);
+            btnEdit.Location = new Point(236, 311);
             btnEdit.Margin = new Padding(2);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(78, 20);
-            btnEdit.TabIndex = 2;
+            btnEdit.TabIndex = 4;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
@@ -155,11 +159,11 @@
             // btnDelete
             // 
             btnDelete.Enabled = false;
-            btnDelete.Location = new Point(318, 250);
+            btnDelete.Location = new Point(319, 311);
             btnDelete.Margin = new Padding(2);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(78, 20);
-            btnDelete.TabIndex = 3;
+            btnDelete.TabIndex = 5;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
@@ -167,11 +171,11 @@
             // btnOpen
             // 
             btnOpen.Enabled = false;
-            btnOpen.Location = new Point(400, 250);
+            btnOpen.Location = new Point(401, 311);
             btnOpen.Margin = new Padding(2);
             btnOpen.Name = "btnOpen";
             btnOpen.Size = new Size(78, 20);
-            btnOpen.TabIndex = 4;
+            btnOpen.TabIndex = 6;
             btnOpen.Text = "Open";
             btnOpen.UseVisualStyleBackColor = true;
             btnOpen.Click += btnOpen_Click;
@@ -179,40 +183,51 @@
             // lblPageNumber
             // 
             lblPageNumber.AutoSize = true;
-            lblPageNumber.Location = new Point(282, 229);
+            lblPageNumber.Location = new Point(297, 290);
             lblPageNumber.Margin = new Padding(2, 0, 2, 0);
             lblPageNumber.Name = "lblPageNumber";
-            lblPageNumber.Size = new Size(33, 15);
+            lblPageNumber.Size = new Size(53, 15);
             lblPageNumber.TabIndex = 5;
-            lblPageNumber.Text = "page";
+            lblPageNumber.Text = "page 1/1";
             lblPageNumber.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnPrevious
             // 
-            btnPrevious.Location = new Point(210, 226);
+            btnPrevious.Location = new Point(211, 287);
             btnPrevious.Margin = new Padding(2);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Size = new Size(70, 20);
-            btnPrevious.TabIndex = 6;
+            btnPrevious.TabIndex = 1;
             btnPrevious.Text = "Previous";
             btnPrevious.UseVisualStyleBackColor = true;
             btnPrevious.Click += btnPrevious_Click;
             // 
             // btnNext
             // 
-            btnNext.Location = new Point(346, 226);
+            btnNext.Location = new Point(364, 287);
             btnNext.Margin = new Padding(2);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(70, 20);
-            btnNext.TabIndex = 7;
+            btnNext.TabIndex = 2;
             btnNext.Text = "Next";
             btnNext.UseVisualStyleBackColor = true;
             btnNext.Click += btnNext_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(201, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(260, 32);
+            label1.TabIndex = 7;
+            label1.Text = "Contact Management";
             // 
             // ucContactManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(btnNext);
             Controls.Add(btnPrevious);
             Controls.Add(lblPageNumber);
@@ -223,7 +238,7 @@
             Controls.Add(dgvContacts);
             Margin = new Padding(2);
             Name = "ucContactManagement";
-            Size = new Size(706, 294);
+            Size = new Size(665, 345);
             Load += ucContactManagement_Load;
             ((System.ComponentModel.ISupportInitialize)dgvContacts).EndInit();
             ResumeLayout(false);
@@ -245,5 +260,6 @@
         private DataGridViewTextBoxColumn colPhoneNumber;
         private DataGridViewCheckBoxColumn colFavorite;
         private DataGridViewTextBoxColumn colID;
+        private Label label1;
     }
 }

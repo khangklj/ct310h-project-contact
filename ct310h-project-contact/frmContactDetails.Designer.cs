@@ -50,54 +50,60 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(107, 9);
+            label1.Location = new Point(75, 5);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(216, 38);
+            label1.Size = new Size(145, 25);
             label1.TabIndex = 0;
             label1.Text = "Contact Details";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(27, 82);
+            label2.Location = new Point(19, 49);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(30, 25);
+            label2.Size = new Size(18, 15);
             label2.TabIndex = 1;
             label2.Text = "ID";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(27, 133);
+            label3.Location = new Point(19, 80);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(59, 25);
+            label3.Size = new Size(39, 15);
             label3.TabIndex = 2;
             label3.Text = "Name";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(27, 184);
+            label4.Location = new Point(19, 110);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(132, 25);
+            label4.Size = new Size(88, 15);
             label4.TabIndex = 3;
             label4.Text = "Phone Number";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(27, 286);
+            label5.Location = new Point(19, 172);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(102, 25);
+            label5.Size = new Size(67, 15);
             label5.TabIndex = 4;
             label5.Text = "Description";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(27, 376);
+            label6.Location = new Point(19, 226);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(62, 25);
+            label6.Size = new Size(40, 15);
             label6.TabIndex = 5;
             label6.Text = "Group";
             // 
@@ -105,59 +111,66 @@
             // 
             chkFavorite.AutoSize = true;
             chkFavorite.Enabled = false;
-            chkFavorite.Location = new Point(303, 81);
+            chkFavorite.Location = new Point(212, 49);
+            chkFavorite.Margin = new Padding(2, 2, 2, 2);
             chkFavorite.Name = "chkFavorite";
-            chkFavorite.Size = new Size(100, 29);
+            chkFavorite.Size = new Size(68, 19);
             chkFavorite.TabIndex = 6;
             chkFavorite.Text = "Favorite";
             chkFavorite.UseVisualStyleBackColor = true;
             // 
             // txtContactID
             // 
-            txtContactID.Location = new Point(184, 79);
+            txtContactID.Location = new Point(129, 47);
+            txtContactID.Margin = new Padding(2, 2, 2, 2);
             txtContactID.Name = "txtContactID";
             txtContactID.ReadOnly = true;
-            txtContactID.Size = new Size(93, 31);
+            txtContactID.Size = new Size(66, 23);
             txtContactID.TabIndex = 7;
             // 
             // txtContactName
             // 
-            txtContactName.Location = new Point(184, 130);
+            txtContactName.Location = new Point(129, 78);
+            txtContactName.Margin = new Padding(2, 2, 2, 2);
             txtContactName.Name = "txtContactName";
             txtContactName.ReadOnly = true;
-            txtContactName.Size = new Size(150, 31);
+            txtContactName.Size = new Size(106, 23);
             txtContactName.TabIndex = 8;
             // 
             // txtContactPhoneNumber
             // 
-            txtContactPhoneNumber.Location = new Point(184, 181);
+            txtContactPhoneNumber.Location = new Point(129, 109);
+            txtContactPhoneNumber.Margin = new Padding(2, 2, 2, 2);
             txtContactPhoneNumber.Name = "txtContactPhoneNumber";
             txtContactPhoneNumber.ReadOnly = true;
-            txtContactPhoneNumber.Size = new Size(150, 31);
+            txtContactPhoneNumber.Size = new Size(106, 23);
             txtContactPhoneNumber.TabIndex = 9;
             // 
             // txtContactDescription
             // 
-            txtContactDescription.Location = new Point(184, 283);
+            txtContactDescription.Location = new Point(129, 170);
+            txtContactDescription.Margin = new Padding(2, 2, 2, 2);
             txtContactDescription.Multiline = true;
             txtContactDescription.Name = "txtContactDescription";
             txtContactDescription.ReadOnly = true;
-            txtContactDescription.Size = new Size(219, 74);
+            txtContactDescription.Size = new Size(154, 46);
             txtContactDescription.TabIndex = 11;
             // 
             // txtContactGroup
             // 
-            txtContactGroup.Location = new Point(184, 373);
+            txtContactGroup.Location = new Point(129, 224);
+            txtContactGroup.Margin = new Padding(2, 2, 2, 2);
             txtContactGroup.Name = "txtContactGroup";
             txtContactGroup.ReadOnly = true;
-            txtContactGroup.Size = new Size(150, 31);
+            txtContactGroup.Size = new Size(106, 23);
             txtContactGroup.TabIndex = 12;
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(233, 426);
+            btnClose.Location = new Point(55, 265);
+            btnClose.Margin = new Padding(2, 2, 2, 2);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(112, 34);
+            btnClose.Size = new Size(78, 20);
             btnClose.TabIndex = 14;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
@@ -165,9 +178,10 @@
             // 
             // btnMailTo
             // 
-            btnMailTo.Location = new Point(84, 426);
+            btnMailTo.Location = new Point(157, 265);
+            btnMailTo.Margin = new Padding(2, 2, 2, 2);
             btnMailTo.Name = "btnMailTo";
-            btnMailTo.Size = new Size(112, 34);
+            btnMailTo.Size = new Size(78, 20);
             btnMailTo.TabIndex = 13;
             btnMailTo.Text = "Mail To";
             btnMailTo.UseVisualStyleBackColor = true;
@@ -175,27 +189,29 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(184, 232);
+            txtEmail.Location = new Point(129, 139);
+            txtEmail.Margin = new Padding(2, 2, 2, 2);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
-            txtEmail.Size = new Size(219, 31);
+            txtEmail.Size = new Size(154, 23);
             txtEmail.TabIndex = 10;
             txtEmail.TextChanged += textBox1_TextChanged;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(27, 235);
+            label7.Location = new Point(19, 141);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(54, 25);
+            label7.Size = new Size(36, 15);
             label7.TabIndex = 14;
             label7.Text = "Email";
             // 
             // frmContactDetails
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(435, 494);
+            ClientSize = new Size(304, 296);
             Controls.Add(txtEmail);
             Controls.Add(label7);
             Controls.Add(btnMailTo);
@@ -212,6 +228,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "frmContactDetails";
             Text = "Contact details";
             Load += frmContactDetails_Load;

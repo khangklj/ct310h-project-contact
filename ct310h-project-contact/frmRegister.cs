@@ -18,11 +18,6 @@ namespace ct310h_project_contact
             InitializeComponent();
         }
 
-
-        private void frmRegister_Load(object sender, EventArgs e)
-        {
-
-        }
         private bool IsUsernameExists(string username)
         {
             try
@@ -57,7 +52,7 @@ namespace ct310h_project_contact
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-            string confirmPassword = txtComfirm.Text.Trim();
+            string confirmPassword = txtConfirmPassword.Text.Trim();
             string name = txtName.Text.Trim();
 
             // check empty
@@ -78,7 +73,7 @@ namespace ct310h_project_contact
             if (string.IsNullOrEmpty(confirmPassword))
             {
                 MessageBox.Show("Please confirm your password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtComfirm.Focus();
+                txtConfirmPassword.Focus();
                 return;
             }
             if (string.IsNullOrEmpty(name))
@@ -92,7 +87,7 @@ namespace ct310h_project_contact
             if (password != confirmPassword)
             {
                 MessageBox.Show("Passwords do not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtComfirm.Focus();
+                txtConfirmPassword.Focus();
                 return;
             }
 
@@ -186,6 +181,45 @@ namespace ct310h_project_contact
             frmLogin loginform = new frmLogin();
             loginform.Show();
             this.Hide();
+        }
+
+        private void frmRegister_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmLogin loginform = new frmLogin();
+            loginform.Show();
+            this.Hide();
+        }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtConfirmPassword.Focus();
+            }
+        }
+
+        private void txtConfirmPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtName.Focus();
+            }
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnRegister.PerformClick();
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace ct310h_project_contact
     {
         private int contactId;
         private bool isEditing;
-        
+
         public frmEditContact(int contactId = -1)
         {
             InitializeComponent();
@@ -110,7 +110,7 @@ namespace ct310h_project_contact
                 string query = "SELECT ContactGroup_ID, ContactGroup_Name FROM ContactGroup WHERE Account_ID = @Account_ID";
 
                 SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
-                cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.accountID);
+                cmd.Parameters.AddWithValue("@Account_ID", AuthService.accountID);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -145,7 +145,7 @@ namespace ct310h_project_contact
                 string email = txtContactEmail.Text.Trim();
                 bool favorite = chkFavorite.Checked;
                 string description = txtContactDescription.Text.Trim();
-                int? accountId = AuthInfo.accountID;
+                int? accountId = AuthService.accountID;
                 int? contactGroupId = (int?)cboGroup.SelectedValue;
 
                 if (string.IsNullOrEmpty(name))
@@ -231,5 +231,36 @@ namespace ct310h_project_contact
             }
         }
 
+        private void txtContactName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtPhoneNumber.Focus();
+            }
+        }
+
+        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtContactEmail.Focus();
+            }
+        }
+
+        private void txtContactEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtContactDescription.Focus();
+            }
+        }
+
+        private void cboGroup_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
+        }
     }
 }

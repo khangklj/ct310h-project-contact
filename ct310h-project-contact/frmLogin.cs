@@ -40,11 +40,11 @@ namespace ct310h_project_contact
 
             if (userId.HasValue)
             {
-                AuthInfo.SetAuth(userId.Value);
+                AuthService.SetAuth(userId.Value);
                 MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                frmTestDatabase frm = new frmTestDatabase();
+                frmHomePage frm = new frmHomePage();
                 this.Hide();
                 frm.ShowDialog();
             }
@@ -103,7 +103,23 @@ namespace ct310h_project_contact
         {
             frmRegister register = new frmRegister();
             register.Show();
-                this.Hide();
+            this.Hide();
+        }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
         }
     }
 }

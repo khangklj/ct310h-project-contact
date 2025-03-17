@@ -38,16 +38,15 @@ namespace ct310h_project_contact
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             llbCreateAccount = new LinkLabel();
-           
             SuspendLayout();
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(389, 254);
+            btnLogin.Location = new Point(223, 191);
             btnLogin.Margin = new Padding(3, 2, 3, 2);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(82, 22);
-            btnLogin.TabIndex = 2;
+            btnLogin.Size = new Size(75, 25);
+            btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
@@ -56,7 +55,7 @@ namespace ct310h_project_contact
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(307, 58);
+            label1.Location = new Point(169, 21);
             label1.Name = "label1";
             label1.Size = new Size(87, 32);
             label1.TabIndex = 3;
@@ -64,9 +63,9 @@ namespace ct310h_project_contact
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(236, 253);
+            btnExit.Location = new Point(122, 191);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(75, 23);
+            btnExit.Size = new Size(75, 25);
             btnExit.TabIndex = 4;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
@@ -75,7 +74,7 @@ namespace ct310h_project_contact
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(236, 129);
+            label2.Location = new Point(104, 90);
             label2.Name = "label2";
             label2.Size = new Size(60, 15);
             label2.TabIndex = 5;
@@ -84,7 +83,7 @@ namespace ct310h_project_contact
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(239, 175);
+            label3.Location = new Point(107, 141);
             label3.Name = "label3";
             label3.Size = new Size(57, 15);
             label3.TabIndex = 6;
@@ -92,26 +91,28 @@ namespace ct310h_project_contact
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(342, 126);
+            txtUsername.Location = new Point(195, 90);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(146, 23);
-            txtUsername.TabIndex = 7;
+            txtUsername.TabIndex = 1;
+            txtUsername.KeyPress += txtUsername_KeyPress;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(342, 172);
+            txtPassword.Location = new Point(195, 141);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(146, 23);
-            txtPassword.TabIndex = 8;
+            txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
+            txtPassword.KeyPress += txtPassword_KeyPress;
             // 
             // llbCreateAccount
             // 
             llbCreateAccount.AutoSize = true;
-            llbCreateAccount.Location = new Point(320, 291);
+            llbCreateAccount.Location = new Point(148, 230);
             llbCreateAccount.Name = "llbCreateAccount";
             llbCreateAccount.Size = new Size(121, 15);
-            llbCreateAccount.TabIndex = 9;
+            llbCreateAccount.TabIndex = 5;
             llbCreateAccount.TabStop = true;
             llbCreateAccount.Text = "Create a new account";
             llbCreateAccount.LinkClicked += llbCreateAccount_Click;
@@ -120,7 +121,7 @@ namespace ct310h_project_contact
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(437, 271);
             Controls.Add(llbCreateAccount);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);

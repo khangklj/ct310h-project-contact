@@ -31,14 +31,10 @@ namespace ct310h_project_contact
                 string query = "SELECT Account_Name FROM Account WHERE Account_ID = @Account_ID";
 
                 SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
-                cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+                cmd.Parameters.AddWithValue("@Account_ID", AuthService.AccountID);
 
                 object result = cmd.ExecuteScalar();
 
-                lblAccountName.Location = new Point(
-                    rbtnAccount.Left + (rbtnAccount.Width - lblAccountName.Width) / 2,
-                    rbtnAccount.Bottom + 5 // 5px spacing below the button
-                );
                 if (result != null)
                 {
                     lblAccountName.Text = result.ToString();
@@ -50,14 +46,14 @@ namespace ct310h_project_contact
                 }
 
                 clsDatabase.CloseConnection();
-            } 
-            catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error loading account name: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-                
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -65,6 +61,8 @@ namespace ct310h_project_contact
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AuthService.ClearAuth();
+
             frmLogin frmLogin = new frmLogin();
             frmLogin.Show();
             this.Hide();
@@ -72,20 +70,47 @@ namespace ct310h_project_contact
 
         private void btnManageContact_Click(object sender, EventArgs e)
         {
-            //ucContactManagement contactManagementControl = new ucContactManagement();
-            //contactManagementControl.Location = new Point(178, 50);
-
-            //this.Controls.Add(contactManagementControl);
+            pnlMain.Controls.Clear();
+            ucContactManagement uc = new ucContactManagement();
+            uc.Location = new Point()
+            {
+                X = pnlMain.Width / 2 - uc.Width / 2,
+                Y = pnlMain.Height / 2 - uc.Height / 2,
+            };
+            pnlMain.Controls.Add(uc);
         }
 
         private void btnManageGroup_Click(object sender, EventArgs e)
         {
-
+            pnlMain.Controls.Clear();
+            ucContactGroupManagement uc = new ucContactGroupManagement();
+            uc.Location = new Point()
+            {
+                X = pnlMain.Width / 2 - uc.Width / 2,
+                Y = pnlMain.Height / 2 - uc.Height / 2,
+            };
+            pnlMain.Controls.Add(uc);
         }
 
         private void rbtnAccount_Click(object sender, EventArgs e)
         {
-            //cmsAccount.Show(rbtnAccount, new Point(rbtnAccount.Width / 2, rbtnAccount.Height / 2));
+            var pos = rbtnAccount.PointToScreen(new System.Drawing.Point(rbtnAccount.Width - cmsAccount.Width, rbtnAccount.Height));
+            cmsAccount.Show(pos);
+        }
+
+        private void tsmiAccountDetails_Click(object sender, EventArgs e)
+        {
+            frmAccountDetails frm = new frmAccountDetails();
+            frm.ShowDialog();
+        }
+
+        private void frmHomePage_FormClosed(object sender, FormClosedEventArgs e)
+        {            
+            AuthService.ClearAuth();
+
+            frmLogin frmLogin = new frmLogin();
+            frmLogin.Show();
+            this.Hide();
         }
     }
 }

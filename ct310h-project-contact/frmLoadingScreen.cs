@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ct310h_project_contact
 {
-    public partial class frmTestContact : Form
+    public partial class frmLoadingScreen : Form
     {
-        public frmTestContact()
+        public frmLoadingScreen()
         {
             InitializeComponent();
         }

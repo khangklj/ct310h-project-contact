@@ -34,7 +34,7 @@ namespace ct310h_project_contact
                 string query = @"SELECT Account_Username, Account_Password, Account_Name, Account_Avatar FROM Account WHERE Account_ID = @Account_ID";
                 using (SqlCommand cmd = new SqlCommand(query, clsDatabase.conn))
                 {
-                    cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+                    cmd.Parameters.AddWithValue("@Account_ID", AuthService.AccountID);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -136,7 +136,7 @@ namespace ct310h_project_contact
                 {
                     cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
                     cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+                    cmd.Parameters.AddWithValue("@Account_ID", AuthService.AccountID);
 
                     if (updateAvatar)
                     {

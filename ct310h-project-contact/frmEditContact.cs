@@ -18,7 +18,7 @@ namespace ct310h_project_contact
     {
         private int contactId;
         private bool isEditing;
-        
+
         public frmEditContact(int contactId = -1)
         {
             InitializeComponent();
@@ -231,5 +231,36 @@ namespace ct310h_project_contact
             }
         }
 
+        private void txtContactName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtPhoneNumber.Focus();
+            }
+        }
+
+        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtContactEmail.Focus();
+            }
+        }
+
+        private void txtContactEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtContactDescription.Focus();
+            }
+        }
+
+        private void cboGroup_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
+        }
     }
 }

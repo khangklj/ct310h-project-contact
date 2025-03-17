@@ -46,7 +46,7 @@ namespace ct310h_project_contact
             btnLogin.Margin = new Padding(3, 2, 3, 2);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(75, 25);
-            btnLogin.TabIndex = 2;
+            btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
@@ -94,15 +94,17 @@ namespace ct310h_project_contact
             txtUsername.Location = new Point(195, 90);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(146, 23);
-            txtUsername.TabIndex = 7;
+            txtUsername.TabIndex = 1;
+            txtUsername.KeyPress += txtUsername_KeyPress;
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(195, 141);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(146, 23);
-            txtPassword.TabIndex = 8;
+            txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
+            txtPassword.KeyPress += txtPassword_KeyPress;
             // 
             // llbCreateAccount
             // 
@@ -110,7 +112,7 @@ namespace ct310h_project_contact
             llbCreateAccount.Location = new Point(148, 230);
             llbCreateAccount.Name = "llbCreateAccount";
             llbCreateAccount.Size = new Size(121, 15);
-            llbCreateAccount.TabIndex = 9;
+            llbCreateAccount.TabIndex = 5;
             llbCreateAccount.TabStop = true;
             llbCreateAccount.Text = "Create a new account";
             llbCreateAccount.LinkClicked += llbCreateAccount_Click;

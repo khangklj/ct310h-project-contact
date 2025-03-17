@@ -105,7 +105,6 @@ namespace ct310h_project_contact
         {
             frmEditContact frm = new frmEditContact();
             frm.ShowDialog();
-            currentPage = totalPages;
             // Reload
             LoadContacts(currentPage);
         }
@@ -206,6 +205,22 @@ namespace ct310h_project_contact
             {
                 currentPage++;
                 LoadContacts(currentPage);
+            }
+        }
+
+        private void dgvContacts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Prevent default event go to next record
+                if (btnPrevious.Enabled)
+                {
+                    btnPrevious.Focus();
+                }
+                else
+                {
+                    btnNext.Focus();
+                }
             }
         }
     }

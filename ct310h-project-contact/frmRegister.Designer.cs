@@ -34,7 +34,7 @@
             label4 = new Label();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
-            txtComfirm = new TextBox();
+            txtConfirmPassword = new TextBox();
             btnExit = new Button();
             btnRegister = new Button();
             lblBackToLogin = new LinkLabel();
@@ -84,30 +84,33 @@
             txtUsername.Location = new Point(201, 98);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(163, 23);
-            txtUsername.TabIndex = 4;
+            txtUsername.TabIndex = 1;
+            txtUsername.KeyPress += txtUsername_KeyPress;
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(200, 143);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(164, 23);
-            txtPassword.TabIndex = 5;
+            txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
+            txtPassword.KeyPress += txtPassword_KeyPress;
             // 
-            // txtComfirm
+            // txtConfirmPassword
             // 
-            txtComfirm.Location = new Point(200, 187);
-            txtComfirm.Name = "txtComfirm";
-            txtComfirm.Size = new Size(164, 23);
-            txtComfirm.TabIndex = 6;
-            txtComfirm.UseSystemPasswordChar = true;
+            txtConfirmPassword.Location = new Point(200, 187);
+            txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.Size = new Size(164, 23);
+            txtConfirmPassword.TabIndex = 3;
+            txtConfirmPassword.UseSystemPasswordChar = true;
+            txtConfirmPassword.KeyPress += txtConfirmPassword_KeyPress;
             // 
             // btnExit
             // 
             btnExit.Location = new Point(108, 290);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(75, 23);
-            btnExit.TabIndex = 7;
+            btnExit.TabIndex = 6;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
@@ -117,7 +120,7 @@
             btnRegister.Location = new Point(224, 290);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(75, 23);
-            btnRegister.TabIndex = 8;
+            btnRegister.TabIndex = 5;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = true;
             btnRegister.Click += btnRegister_Click;
@@ -128,7 +131,7 @@
             lblBackToLogin.Location = new Point(167, 334);
             lblBackToLogin.Name = "lblBackToLogin";
             lblBackToLogin.Size = new Size(76, 15);
-            lblBackToLogin.TabIndex = 9;
+            lblBackToLogin.TabIndex = 7;
             lblBackToLogin.TabStop = true;
             lblBackToLogin.Text = "Back to login";
             lblBackToLogin.LinkClicked += lblBackToLogin_LinkClicked;
@@ -147,7 +150,8 @@
             txtName.Location = new Point(200, 232);
             txtName.Name = "txtName";
             txtName.Size = new Size(164, 23);
-            txtName.TabIndex = 11;
+            txtName.TabIndex = 4;
+            txtName.KeyPress += txtName_KeyPress;
             // 
             // frmRegister
             // 
@@ -159,7 +163,7 @@
             Controls.Add(lblBackToLogin);
             Controls.Add(btnRegister);
             Controls.Add(btnExit);
-            Controls.Add(txtComfirm);
+            Controls.Add(txtConfirmPassword);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(label4);
@@ -181,7 +185,7 @@
         private Label label4;
         private TextBox txtUsername;
         private TextBox txtPassword;
-        private TextBox txtComfirm;
+        private TextBox txtConfirmPassword;
         private Button btnExit;
         private Button btnRegister;
         private LinkLabel lblBackToLogin;

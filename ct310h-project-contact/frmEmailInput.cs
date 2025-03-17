@@ -43,5 +43,12 @@ namespace ct310h_project_contact
             this.Close();
         }
 
+        private void txtEmailInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnOK.PerformClick();
+            }
+        }
     }
 }

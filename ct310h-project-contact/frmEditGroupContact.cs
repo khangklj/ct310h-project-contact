@@ -165,5 +165,13 @@ namespace ct310h_project_contact
             txtContactGroup_ID.Clear();
             this.Hide();
         }
+
+        private void txtContactGroup_Name_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                rtxContactGroup_Description.Focus();
+            }
+        }
     }
 }

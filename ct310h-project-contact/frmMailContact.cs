@@ -197,5 +197,37 @@ namespace ct310h_project_contact
                 MessageBox.Show("Please select a BCC email to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void txtMailSubject_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtMailBody.Focus();
+            }
+        }
+
+        private void lstCc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                lstBcc.Focus();
+            }
+        }
+
+        private void lstBcc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                lstFiles.Focus();
+            }
+        }
+
+        private void lstFiles_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSend.PerformClick();
+            }
+        }
     }
 }

@@ -105,7 +105,7 @@ namespace ct310h_project_contact
         }
 
         private void frmHomePage_FormClosed(object sender, FormClosedEventArgs e)
-        {
+        {            
             AuthInfo.ClearAuth();
 
             frmLogin frmLogin = new frmLogin();

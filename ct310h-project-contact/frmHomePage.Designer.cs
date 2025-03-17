@@ -51,7 +51,7 @@ namespace ct310h_project_contact
             btnManageContact.Margin = new Padding(2);
             btnManageContact.Name = "btnManageContact";
             btnManageContact.Size = new Size(105, 29);
-            btnManageContact.TabIndex = 0;
+            btnManageContact.TabIndex = 1;
             btnManageContact.Text = "Manage Contact";
             btnManageContact.UseVisualStyleBackColor = true;
             btnManageContact.Click += btnManageContact_Click;
@@ -62,7 +62,7 @@ namespace ct310h_project_contact
             btnManageGroup.Margin = new Padding(2);
             btnManageGroup.Name = "btnManageGroup";
             btnManageGroup.Size = new Size(105, 29);
-            btnManageGroup.TabIndex = 1;
+            btnManageGroup.TabIndex = 2;
             btnManageGroup.Text = "Manage Group";
             btnManageGroup.UseVisualStyleBackColor = true;
             btnManageGroup.Click += btnManageGroup_Click;

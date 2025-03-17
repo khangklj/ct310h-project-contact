@@ -44,12 +44,13 @@
             // 
             txtEmailInput.Location = new Point(20, 45);
             txtEmailInput.Name = "txtEmailInput";
-            txtEmailInput.Size = new Size(350, 31);
+            txtEmailInput.Size = new Size(350, 23);
             txtEmailInput.TabIndex = 1;
+            txtEmailInput.KeyPress += txtEmailInput_KeyPress;
             // 
             // btnOK
             // 
-            btnOK.Location = new Point(190, 90);
+            btnOK.Location = new Point(295, 92);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(75, 34);
             btnOK.TabIndex = 2;
@@ -58,7 +59,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(280, 90);
+            btnCancel.Location = new Point(202, 92);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 34);
             btnCancel.TabIndex = 3;
@@ -68,9 +69,9 @@
             // lblPrompt
             // 
             lblPrompt.AutoSize = true;
-            lblPrompt.Location = new Point(20, 20);
+            lblPrompt.Location = new Point(20, 18);
             lblPrompt.Name = "lblPrompt";
-            lblPrompt.Size = new Size(103, 25);
+            lblPrompt.Size = new Size(69, 15);
             lblPrompt.TabIndex = 0;
             lblPrompt.Text = "Enter Email:";
             // 

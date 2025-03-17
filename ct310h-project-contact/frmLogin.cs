@@ -103,7 +103,23 @@ namespace ct310h_project_contact
         {
             frmRegister register = new frmRegister();
             register.Show();
-                this.Hide();
+            this.Hide();
+        }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
         }
     }
 }

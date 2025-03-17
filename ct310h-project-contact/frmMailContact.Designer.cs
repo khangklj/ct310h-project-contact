@@ -53,88 +53,99 @@
             // 
             // txtMailTo
             // 
-            txtMailTo.Location = new Point(138, 63);
+            txtMailTo.Location = new Point(97, 38);
+            txtMailTo.Margin = new Padding(2);
             txtMailTo.Name = "txtMailTo";
             txtMailTo.ReadOnly = true;
-            txtMailTo.Size = new Size(249, 31);
+            txtMailTo.Size = new Size(176, 23);
             txtMailTo.TabIndex = 0;
             // 
             // txtMailSubject
             // 
-            txtMailSubject.Location = new Point(138, 115);
+            txtMailSubject.Location = new Point(97, 69);
+            txtMailSubject.Margin = new Padding(2);
             txtMailSubject.Name = "txtMailSubject";
-            txtMailSubject.Size = new Size(249, 31);
-            txtMailSubject.TabIndex = 2;
+            txtMailSubject.Size = new Size(176, 23);
+            txtMailSubject.TabIndex = 1;
+            txtMailSubject.KeyPress += txtMailSubject_KeyPress;
             // 
             // txtMailBody
             // 
-            txtMailBody.Location = new Point(138, 175);
+            txtMailBody.Location = new Point(97, 105);
+            txtMailBody.Margin = new Padding(2);
             txtMailBody.Multiline = true;
             txtMailBody.Name = "txtMailBody";
-            txtMailBody.Size = new Size(249, 269);
-            txtMailBody.TabIndex = 4;
+            txtMailBody.Size = new Size(176, 163);
+            txtMailBody.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(32, 66);
+            label1.Location = new Point(68, 38);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(30, 25);
+            label1.Size = new Size(19, 15);
             label1.TabIndex = 5;
             label1.Text = "To";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(413, 69);
+            label2.Location = new Point(318, 38);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(31, 25);
+            label2.Size = new Size(21, 15);
             label2.TabIndex = 6;
             label2.Text = "Cc";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(413, 202);
+            label3.Location = new Point(313, 118);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(38, 25);
+            label3.Size = new Size(26, 15);
             label3.TabIndex = 7;
             label3.Text = "Bcc";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 118);
+            label4.Location = new Point(41, 69);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(70, 25);
+            label4.Size = new Size(46, 15);
             label4.TabIndex = 8;
             label4.Text = "Subject";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(32, 178);
+            label5.Location = new Point(22, 105);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(100, 25);
+            label5.Size = new Size(65, 15);
             label5.TabIndex = 9;
             label5.Text = "Body fields";
             // 
             // btnSend
             // 
-            btnSend.Location = new Point(266, 465);
+            btnSend.Location = new Point(280, 297);
+            btnSend.Margin = new Padding(2);
             btnSend.Name = "btnSend";
-            btnSend.Size = new Size(112, 34);
-            btnSend.TabIndex = 9;
+            btnSend.Size = new Size(78, 20);
+            btnSend.TabIndex = 12;
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = true;
             btnSend.Click += btnSend_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(429, 465);
+            btnCancel.Location = new Point(181, 297);
+            btnCancel.Margin = new Padding(2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(112, 34);
-            btnCancel.TabIndex = 10;
+            btnCancel.Size = new Size(78, 20);
+            btnCancel.TabIndex = 13;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -143,66 +154,74 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(342, 9);
+            label6.Location = new Point(239, 5);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(87, 38);
+            label6.Size = new Size(59, 25);
             label6.TabIndex = 12;
             label6.Text = "MAIL";
             // 
             // lstFiles
             // 
             lstFiles.FormattingEnabled = true;
-            lstFiles.ItemHeight = 25;
-            lstFiles.Location = new Point(519, 332);
+            lstFiles.ItemHeight = 15;
+            lstFiles.Location = new Point(363, 199);
+            lstFiles.Margin = new Padding(2);
             lstFiles.Name = "lstFiles";
-            lstFiles.Size = new Size(249, 104);
-            lstFiles.TabIndex = 6;
+            lstFiles.Size = new Size(176, 64);
+            lstFiles.TabIndex = 9;
+            lstFiles.KeyPress += lstFiles_KeyPress;
             // 
             // lblFiles
             // 
             lblFiles.AutoSize = true;
-            lblFiles.Location = new Point(413, 332);
+            lblFiles.Location = new Point(309, 199);
+            lblFiles.Margin = new Padding(2, 0, 2, 0);
             lblFiles.Name = "lblFiles";
-            lblFiles.Size = new Size(46, 25);
+            lblFiles.Size = new Size(30, 15);
             lblFiles.TabIndex = 14;
             lblFiles.Text = "Files";
             // 
             // btnInsertFile
             // 
-            btnInsertFile.Location = new Point(413, 369);
+            btnInsertFile.Location = new Point(289, 221);
+            btnInsertFile.Margin = new Padding(2);
             btnInsertFile.Name = "btnInsertFile";
-            btnInsertFile.Size = new Size(71, 34);
-            btnInsertFile.TabIndex = 7;
+            btnInsertFile.Size = new Size(50, 20);
+            btnInsertFile.TabIndex = 10;
             btnInsertFile.Text = "Insert";
             btnInsertFile.UseVisualStyleBackColor = true;
             btnInsertFile.Click += btnInsertFile_Click;
             // 
             // btnDeleteFiles
             // 
-            btnDeleteFiles.Location = new Point(413, 411);
+            btnDeleteFiles.Location = new Point(289, 247);
+            btnDeleteFiles.Margin = new Padding(2);
             btnDeleteFiles.Name = "btnDeleteFiles";
-            btnDeleteFiles.Size = new Size(71, 34);
-            btnDeleteFiles.TabIndex = 8;
+            btnDeleteFiles.Size = new Size(50, 20);
+            btnDeleteFiles.TabIndex = 11;
             btnDeleteFiles.Text = "Delete";
             btnDeleteFiles.UseVisualStyleBackColor = true;
             btnDeleteFiles.Click += btnDeleteFiles_Click;
             // 
             // btnDeleteCc
             // 
-            btnDeleteCc.Location = new Point(413, 142);
+            btnDeleteCc.Location = new Point(289, 85);
+            btnDeleteCc.Margin = new Padding(2);
             btnDeleteCc.Name = "btnDeleteCc";
-            btnDeleteCc.Size = new Size(71, 34);
-            btnDeleteCc.TabIndex = 17;
+            btnDeleteCc.Size = new Size(50, 20);
+            btnDeleteCc.TabIndex = 5;
             btnDeleteCc.Text = "Delete";
             btnDeleteCc.UseVisualStyleBackColor = true;
             btnDeleteCc.Click += btnDeleteCc_Click;
             // 
             // btnInsertCc
             // 
-            btnInsertCc.Location = new Point(413, 100);
+            btnInsertCc.Location = new Point(289, 60);
+            btnInsertCc.Margin = new Padding(2);
             btnInsertCc.Name = "btnInsertCc";
-            btnInsertCc.Size = new Size(71, 34);
-            btnInsertCc.TabIndex = 16;
+            btnInsertCc.Size = new Size(50, 20);
+            btnInsertCc.TabIndex = 4;
             btnInsertCc.Text = "Insert";
             btnInsertCc.UseVisualStyleBackColor = true;
             btnInsertCc.Click += btnInsertCc_Click;
@@ -210,28 +229,32 @@
             // lstCc
             // 
             lstCc.FormattingEnabled = true;
-            lstCc.ItemHeight = 25;
-            lstCc.Location = new Point(519, 63);
+            lstCc.ItemHeight = 15;
+            lstCc.Location = new Point(363, 38);
+            lstCc.Margin = new Padding(2);
             lstCc.Name = "lstCc";
-            lstCc.Size = new Size(249, 104);
-            lstCc.TabIndex = 15;
+            lstCc.Size = new Size(176, 64);
+            lstCc.TabIndex = 3;
+            lstCc.KeyPress += lstCc_KeyPress;
             // 
             // btnDeleteBcc
             // 
-            btnDeleteBcc.Location = new Point(413, 275);
+            btnDeleteBcc.Location = new Point(289, 165);
+            btnDeleteBcc.Margin = new Padding(2);
             btnDeleteBcc.Name = "btnDeleteBcc";
-            btnDeleteBcc.Size = new Size(71, 34);
-            btnDeleteBcc.TabIndex = 20;
+            btnDeleteBcc.Size = new Size(50, 20);
+            btnDeleteBcc.TabIndex = 8;
             btnDeleteBcc.Text = "Delete";
             btnDeleteBcc.UseVisualStyleBackColor = true;
             btnDeleteBcc.Click += btnDeleteBcc_Click;
             // 
             // btnInsertBcc
             // 
-            btnInsertBcc.Location = new Point(413, 233);
+            btnInsertBcc.Location = new Point(289, 140);
+            btnInsertBcc.Margin = new Padding(2);
             btnInsertBcc.Name = "btnInsertBcc";
-            btnInsertBcc.Size = new Size(71, 34);
-            btnInsertBcc.TabIndex = 19;
+            btnInsertBcc.Size = new Size(50, 20);
+            btnInsertBcc.TabIndex = 7;
             btnInsertBcc.Text = "Insert";
             btnInsertBcc.UseVisualStyleBackColor = true;
             btnInsertBcc.Click += btnInsertBcc_Click;
@@ -239,17 +262,19 @@
             // lstBcc
             // 
             lstBcc.FormattingEnabled = true;
-            lstBcc.ItemHeight = 25;
-            lstBcc.Location = new Point(519, 196);
+            lstBcc.ItemHeight = 15;
+            lstBcc.Location = new Point(363, 118);
+            lstBcc.Margin = new Padding(2);
             lstBcc.Name = "lstBcc";
-            lstBcc.Size = new Size(249, 104);
-            lstBcc.TabIndex = 18;
+            lstBcc.Size = new Size(176, 64);
+            lstBcc.TabIndex = 6;
+            lstBcc.KeyPress += lstBcc_KeyPress;
             // 
             // frmMailContact
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(798, 511);
+            ClientSize = new Size(559, 328);
             Controls.Add(btnDeleteBcc);
             Controls.Add(btnInsertBcc);
             Controls.Add(lstBcc);
@@ -271,6 +296,7 @@
             Controls.Add(txtMailBody);
             Controls.Add(txtMailSubject);
             Controls.Add(txtMailTo);
+            Margin = new Padding(2);
             Name = "frmMailContact";
             Text = "frmMailContact";
             ResumeLayout(false);

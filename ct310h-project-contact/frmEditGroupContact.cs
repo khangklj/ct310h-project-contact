@@ -14,7 +14,7 @@ namespace ct310h_project_contact
     public partial class frmEditGroupContact : Form
     {
 
-        private readonly int? account_ID = AuthInfo.AccountID; //why readonly ?
+        private readonly int? account_ID = AuthService.AccountID; //why readonly ?
         private readonly bool isEditing;
         private readonly int contactGroupID;
 

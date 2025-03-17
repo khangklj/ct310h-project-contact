@@ -31,7 +31,7 @@ namespace ct310h_project_contact
                 string query = "SELECT Account_Name FROM Account WHERE Account_ID = @Account_ID";
 
                 SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
-                cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+                cmd.Parameters.AddWithValue("@Account_ID", AuthService.AccountID);
 
                 object result = cmd.ExecuteScalar();
 
@@ -61,7 +61,7 @@ namespace ct310h_project_contact
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AuthInfo.ClearAuth();
+            AuthService.ClearAuth();
 
             frmLogin frmLogin = new frmLogin();
             frmLogin.Show();
@@ -106,7 +106,7 @@ namespace ct310h_project_contact
 
         private void frmHomePage_FormClosed(object sender, FormClosedEventArgs e)
         {            
-            AuthInfo.ClearAuth();
+            AuthService.ClearAuth();
 
             frmLogin frmLogin = new frmLogin();
             frmLogin.Show();

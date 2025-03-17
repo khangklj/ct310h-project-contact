@@ -110,7 +110,7 @@ namespace ct310h_project_contact
                 string query = "SELECT ContactGroup_ID, ContactGroup_Name FROM ContactGroup WHERE Account_ID = @Account_ID";
 
                 SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
-                cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.accountID);
+                cmd.Parameters.AddWithValue("@Account_ID", AuthService.accountID);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -145,7 +145,7 @@ namespace ct310h_project_contact
                 string email = txtContactEmail.Text.Trim();
                 bool favorite = chkFavorite.Checked;
                 string description = txtContactDescription.Text.Trim();
-                int? accountId = AuthInfo.accountID;
+                int? accountId = AuthService.accountID;
                 int? contactGroupId = (int?)cboGroup.SelectedValue;
 
                 if (string.IsNullOrEmpty(name))

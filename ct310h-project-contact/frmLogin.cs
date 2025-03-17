@@ -40,7 +40,7 @@ namespace ct310h_project_contact
 
             if (userId.HasValue)
             {
-                AuthInfo.SetAuth(userId.Value);
+                AuthService.SetAuth(userId.Value);
                 MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 

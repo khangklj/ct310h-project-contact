@@ -55,7 +55,7 @@ namespace ct310h_project_contact
                 SqlCommand cmd = new SqlCommand(query, clsDatabase.conn);
 
                 // Bind parameters
-                cmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+                cmd.Parameters.AddWithValue("@Account_ID", AuthService.AccountID);
                 cmd.Parameters.AddWithValue("@Offset", (page - 1) * pageSize);
                 cmd.Parameters.AddWithValue("@PageSize", pageSize);
 
@@ -86,7 +86,7 @@ namespace ct310h_project_contact
 
                 string countQuery = "SELECT COUNT(*) FROM Contact WHERE ACCOUNT_ID = @Account_ID";
                 SqlCommand countCmd = new SqlCommand(countQuery, clsDatabase.conn);
-                countCmd.Parameters.AddWithValue("@Account_ID", AuthInfo.AccountID);
+                countCmd.Parameters.AddWithValue("@Account_ID", AuthService.AccountID);
 
                 int countRecords = (int)countCmd.ExecuteScalar();
 

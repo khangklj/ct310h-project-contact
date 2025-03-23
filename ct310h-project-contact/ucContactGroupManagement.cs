@@ -14,7 +14,7 @@ namespace ct310h_project_contact{
 
     public partial class ucContactGroupManagement : UserControl
     {
-        private readonly int? account_ID = 2;
+        private readonly int? account_ID = AuthService.AccountID;
         private int selectedGroupID;
         public ucContactGroupManagement()
         {

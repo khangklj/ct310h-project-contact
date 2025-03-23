@@ -13,7 +13,7 @@ namespace ct310h_project_contact
 {
     public partial class frmAddContactFromGroupContactManagement : Form
     {
-        int? accountid = 2;
+        int? accountid = AuthService.accountID;
         int? groupid;
         string groupName;
         public frmAddContactFromGroupContactManagement(int? groupid, string groupName)
